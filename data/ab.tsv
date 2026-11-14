@@ -1,0 +1,23 @@
+lane	version	status	cell	kind	control_arm	n	K	model_finds	control_finds	random_mean	random_lo	random_hi	auc	base_rate	verdict	source	rules_note	ref_lbv1
+sched-netres-lb	v1	former champion	NetRes NR_TF pass 3 (set held out)	offline	plain	6834	1366	1357	963	991.6	962.975	1020.0	0.8841	0.7259	model	registry	one-feature rules chosen after the fact, same K: relgap (UB-LB)/UB descending 1,317, gap descending 1,296, LB minus trivial bound ascending 1,278	
+sched-netres-lb	v1	former champion	NetRes pass 1 to pass 3 (time split)	offline	plain	15854	3170	2575	1587	1469.4	1421.0	1519.0	0.8126	0.4635	model	registry	one-feature rules chosen after the fact, same K: LB position between trivial bound and UB ascending 2,658 (above the model), LB minus trivial bound ascending 2,507, gap descending 2,232	
+sched-netres-lb	v1	former champion	NetRes pass 3 remainder (prospective)	prospective	plain	885	177	166	81	66.8	55.0	78.0	0.9026	0.3774	model	registry		
+sched-netres-lb	v1	former champion	NetRes re-runs: pass-3c misses at 40 s (online, side by side)	online	plain	750	150	74	51						model	registry		
+sched-netres-lb	v1	former champion	NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1)	prospective	plain	5384	1076	1012	802	970.08			0.5851606533417294	0.9016	model	registry		
+sched-netres-lb	v2	champion	NetRes lb6 (prospective, v2 vs plain)	prospective	plain	7200	1440	1440	1326						model	registry		
+sched-netres-lb	v2	champion	NetRes lb6 (prospective, v2 vs v1 champion)	prospective	v1	7200	1440	1440	1440						tie	registry		
+sched-netres-lb	v2	champion	NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1)	prospective	v1	5384	1076	1065	1012	970.08			0.7417387721466832	0.9016	model	registry		
+sched-netres-lb	a1	challenger	NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1)	prospective	v1	5384	1076	1067	1012	970.08			0.8292161298598316	0.9016	model	registry		
+sched-netres-lb	v1	former champion	NetRes pass 3b at 40 s (prospective)	prospective	plain	9982	1996	1167	739	538.5				0.2698	model	rescored here (registry: pending)		
+sched-netres-lb	v1	former champion	NetRes pass 3c (prospective)	prospective	plain	5377	1075	1020	438	457.4				0.4255	model	rescored here (registry: pending)		
+sched-netres-rerun	v1	challenger	NetRes re-runs: NR_VAR held out	offline	plain	1121	224	46	39	12.4	7.0	18.0	0.8666	0.0553	model	registry		53
+sched-netres-rerun	v1	challenger	NetRes re-runs: pass-3c misses at 40 s (online, side by side)	online	plain	750	150	44	51						control	registry		74
+sched-netres-rerun	v1	challenger	NetRes re-runs: pass 3b after the snapshot (prospective)	prospective	plain	2000	400	150	65	61.4	49.0	74.0	0.8061	0.1535	model	registry		156
+sched-netres-rerun	v2	former champion	NetRes re-runs: pass 3b lines after v1's cell 2 (NR_TF from its 282nd line, NR_AD; time split)	offline	plain	5582	1116	701	423	391.3	362.0	419.0	0.7336	0.3506	model	registry		698
+sched-netres-rerun	v2	former champion	NetRes re-runs: lb5 90 s Kaggle re-runs of the 947 pass-3 misses pass 3b never ran (instance set held out)	offline	plain	947	189	129	49	67.3	56.0	79.0	0.7451	0.3559	model	registry		133
+sched-netres-rerun	x1	demoted	NetRes re-runs: pass 3b lines after v1's cell 2 (NR_TF from its 282nd line, NR_AD; time split)	offline	plain	5582	1116	665	423	391.3	362.0	419.0	0.7092	0.3506	model	registry		698
+sched-netres-rerun	x1	demoted	NetRes re-runs: lb5 90 s Kaggle re-runs of the 947 pass-3 misses pass 3b never ran (instance set held out)	offline	plain	947	189	126	49	67.3	56.0	79.0	0.7161	0.3559	model	registry		133
+sched-netres-rerun	x1	demoted	NetRes re-runs: second chances at 40 s, x1 vs v2 head-to-head (online; autoloop c1)	online	v2	500	100	46	63	38.77			0.6453564421190321	0.3877	control	registry		
+sched-netres-rerun	x1	demoted	NetRes re-runs: second chances at 40 s, x1 vs v2 head-to-head (online; autoloop c1)	online	plain	500	100	46	21	38.77			0.6453564421190321	0.3877	model	registry		
+sched-netres-lb-params	v1	challenger	NetRes settings: pass-3c misses (fresh, top 200 by lane sched-netres-lb v1)	online	plain	200	200	127	132						control	registry		
+sched-netres-lb-params	v1	challenger	NetRes settings: NR_TF pass-3 misses (set held out, top 200 by lane sched-netres-lb v1)	online	plain	200	200	123	123						tie	registry		

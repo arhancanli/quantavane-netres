@@ -1,0 +1,4 @@
+cell	n	K	base_rate	model_finds	control_finds	random_mean	model_units	control_units	recorded_model	recorded_control	match
+NetRes pass 3 remainder (prospective)	885	177	0.3774	166	81	66.8	318	151	166	81	True
+NetRes pass 3b at 40 s (prospective)	9982	1996	0.2698	1167	739	538.5	1339	808	1167	739	True
+NetRes pass 3c (prospective)	5377	1075	0.4255	1020	438	457.4	2344	803	1020	438	True

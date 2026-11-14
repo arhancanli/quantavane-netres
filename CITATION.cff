@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code or these data, please cite them as below, with the NetRes sets of Vanhoucke and Coelho (2018) and the Solutions Update site of Ghent University."
+type: software
+title: "Closing open NetRes instances of the resource-constrained project scheduling problem with CP-SAT and a learned run order: code and data"
+abstract: "The CP-SAT model and destructive lower-bound procedure, the NetRes runners for a laptop and for Kaggle notebooks, the frozen predictions and registry entries of the learned run orders, and the scripts and per-instance data extracts behind the paper of the same title."
+authors:
+  - family-names: Canli
+    given-names: Arhan
+    affiliation: Quantavane
+    email: arhan@quantavane.com
+license:
+  - MIT
+  - CC-BY-4.0
+url: "https://quantavane.com"
+repository-code: "https://github.com/arhancanli/quantavane-netres"
+date-released: "2026-11-14"
+keywords:
+  - resource-constrained project scheduling
+  - NetRes
+  - CP-SAT
+  - lower bounds
+  - learning to rank

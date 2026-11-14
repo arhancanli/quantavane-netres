@@ -1,0 +1,14 @@
+set	type	lines	feasible	infeasible	makespan differs	end start differs	optimal = published LB = UB	optimal not reflected	heuristic: published UB <= value	heuristic: since beaten	heuristic not reflected	instance not in state
+NR_AD	heuristic	790	790	0	0	0	0	0	790	2	0	0
+NR_AD	optimal	25307	25307	0	0	0	25307	0	0	0	0	0
+NR_LA	optimal	240	240	0	0	0	240	0	0	0	0	0
+NR_RC	heuristic	115	115	0	0	0	0	0	115	0	0	0
+NR_RC	optimal	5997	5997	0	0	0	5997	0	0	0	0	0
+NR_RU	heuristic	109	109	0	0	0	0	0	109	0	0	0
+NR_RU	optimal	1861	1861	0	0	0	1861	0	0	0	0	0
+NR_SP	heuristic	407	407	0	0	0	0	0	407	2	0	0
+NR_SP	optimal	14057	14057	0	0	0	14057	0	0	0	0	0
+NR_TF	heuristic	1126	1126	0	0	0	0	0	1126	1	0	0
+NR_TF	optimal	15600	15600	0	0	0	15600	0	0	0	0	0
+NR_VAR	heuristic	13	13	0	0	0	0	0	13	0	0	0
+NR_VAR	optimal	3191	3191	0	0	0	3191	0	0	0	0	0

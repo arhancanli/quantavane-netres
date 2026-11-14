@@ -1,0 +1,71 @@
+set	id	kind	claim	lb_1101	ub_1109	T	cpsat	cpsat_secs	highs	highs_secs	cols	rows	cpsat_s	highs_s
+NR_SP	104489	lower bound	57	54	60	56	infeasible	7.58	no verdict (Time limit reached)	30.02	1305	1035	120.0	30.0
+NR_SP	207070	lower bound	62	61	64	61	infeasible	0.0	no verdict (Time limit reached)	30.03	1603	1393	120.0	30.0
+NR_SP	220567	lower bound	72	71	74	71	infeasible	0.0	no verdict (Time limit reached)	30.02	1913	1006	120.0	30.0
+NR_SP	270078	lower bound	40	36	42	39	infeasible	1.5	no verdict (Time limit reached)	30.02	761	1034	120.0	30.0
+NR_SP	279946	lower bound	59	55	62	58	infeasible	2.74	no verdict (Time limit reached)	30.04	1182	1878	120.0	30.0
+NR_SP	27066	optimal	26	25	26	25	infeasible	0.28	infeasible	1.97	401	291	120.0	30.0
+NR_SP	96328	optimal	57	49	57	56	infeasible	2.32	no verdict (Time limit reached)	30.07	1304	1363	120.0	30.0
+NR_SP	125182	optimal	53	45	53	52	infeasible	1.39	no verdict (Time limit reached)	30.02	1303	710	120.0	30.0
+NR_SP	177382	optimal	67	64	67	66	infeasible	1.46	no verdict (Time limit reached)	30.03	1723	934	120.0	30.0
+NR_SP	283541	optimal	50	45	50	49	infeasible	11.07	no verdict (Time limit reached)	30.02	1118	1451	120.0	30.0
+NR_AD	189125	lower bound	79	74	86	78	infeasible	5.41	no verdict (Time limit reached)	30.03	2043	810	120.0	30.0
+NR_AD	213933	lower bound	89	86	92	88	infeasible	0.0	no verdict (Time limit reached)	30.03	2338	970	120.0	30.0
+NR_AD	217143	lower bound	67	64	74	66	infeasible	0.0	no verdict (Time limit reached)	30.03	1668	746	120.0	30.0
+NR_AD	228309	lower bound	72	70	79	71	infeasible	10.54	no verdict (Time limit reached)	30.02	1753	1120	120.0	30.0
+NR_AD	295597	lower bound	37	36	39	36	infeasible	0.8	no verdict (Time limit reached)	30.01	812	440	120.0	30.0
+NR_AD	92359	optimal	53	47	53	52	infeasible	0.49	no verdict (Time limit reached)	30.01	1193	403	120.0	30.0
+NR_AD	117159	optimal	55	52	55	54	infeasible	0.25	no verdict (Time limit reached)	30.03	1253	431	120.0	30.0
+NR_AD	119517	optimal	47	46	47	46	infeasible	0.76	no verdict (Time limit reached)	30.01	1043	451	120.0	30.0
+NR_AD	224318	optimal	94	93	94	93	infeasible	0.0	infeasible	19.01	2378	1499	120.0	30.0
+NR_AD	242748	optimal	49	46	49	48	infeasible	0.81	no verdict (Time limit reached)	30.01	1087	515	120.0	30.0
+NR_LA	270264	lower bound	86	85	86	85	no verdict (UNKNOWN)	120.0	no verdict (Time limit reached)	30.04	1626	2602	120.0	30.0
+NR_LA	285864	lower bound	88	87	88	87	infeasible	35.06	no verdict (Time limit reached)	30.06	1686	2703	120.0	30.0
+NR_LA	309864	lower bound	82	79	82	81	infeasible	21.98	no verdict (Time limit reached)	30.03	1506	2397	120.0	30.0
+NR_LA	345864	lower bound	99	98	99	98	no verdict (UNKNOWN)	120.02	no verdict (Time limit reached)	30.11	2016	3264	120.0	30.0
+NR_LA	435880	lower bound	67	56	67	66	infeasible	65.49	no verdict (Time limit reached)	30.03	953	2118	120.0	30.0
+NR_LA	193464	optimal	69	64	69	68	infeasible	0.02	no verdict (Time limit reached)	30.03	1116	1722	120.0	30.0
+NR_LA	372264	optimal	56	53	56	55	infeasible	0.03	infeasible	9.17	726	1069	120.0	30.0
+NR_LA	381785	optimal	66	60	66	65	infeasible	0.04	infeasible	27.85	1106	3457	120.0	30.0
+NR_LA	450185	optimal	56	46	56	55	infeasible	0.4	no verdict (Time limit reached)	30.02	806	2416	120.0	30.0
+NR_LA	477712	optimal	58	54	58	57	infeasible	0.26	no verdict (Time limit reached)	30.04	870	2521	120.0	30.0
+NR_TF	283530	lower bound	70	69	79	69	infeasible	1.97	no verdict (Time limit reached)	30.03	1755	1248	120.0	30.0
+NR_TF	335119	lower bound	77	76	82	76	infeasible	2.22	no verdict (Time limit reached)	30.04	1838	1671	120.0	30.0
+NR_TF	342355	lower bound	84	82	93	83	infeasible	2.77	no verdict (Time limit reached)	30.03	2020	1641	120.0	30.0
+NR_TF	386763	lower bound	52	51	59	51	infeasible	0.15	no verdict (Time limit reached)	30.01	1095	814	120.0	30.0
+NR_TF	417934	lower bound	47	46	50	46	infeasible	5.26	no verdict (Time limit reached)	30.01	962	793	120.0	30.0
+NR_TF	180396	optimal	68	60	68	67	infeasible	0.38	no verdict (Time limit reached)	30.01	1466	1086	120.0	30.0
+NR_TF	189989	optimal	58	53	58	57	infeasible	0.21	no verdict (Time limit reached)	30.03	1207	747	120.0	30.0
+NR_TF	191155	optimal	63	53	63	62	infeasible	0.34	no verdict (Time limit reached)	30.04	1390	1074	120.0	30.0
+NR_TF	216346	optimal	54	48	54	53	infeasible	1.04	no verdict (Time limit reached)	30.05	1124	1000	120.0	30.0
+NR_TF	427519	optimal	54	48	54	53	infeasible	0.79	no verdict (Time limit reached)	30.01	1148	958	120.0	30.0
+NR_RC	183088	lower bound	77	76	83	76	infeasible	3.01	no verdict (Time limit reached)	30.06	1715	1658	120.0	30.0
+NR_RC	190252	lower bound	73	72	75	72	infeasible	1.92	no verdict (Time limit reached)	30.04	1776	1658	120.0	30.0
+NR_RC	205844	lower bound	78	76	83	77	infeasible	5.0	no verdict (Time limit reached)	30.07	1896	1563	120.0	30.0
+NR_RC	219639	lower bound	83	80	84	82	infeasible	0.0	no verdict (Time limit reached)	30.02	2107	1108	120.0	30.0
+NR_RC	314739	lower bound	36	35	38	35	infeasible	7.33	no verdict (Time limit reached)	30.01	697	309	120.0	30.0
+NR_RC	136515	optimal	69	60	69	68	infeasible	0.03	no verdict (Time limit reached)	30.02	1327	949	120.0	30.0
+NR_RC	191779	optimal	67	64	67	66	infeasible	7.46	no verdict (Time limit reached)	30.02	1601	1051	120.0	30.0
+NR_RC	304880	optimal	51	47	51	50	infeasible	0.03	no verdict (Time limit reached)	30.01	819	831	120.0	30.0
+NR_RC	307204	optimal	41	35	41	40	infeasible	2.66	no verdict (Time limit reached)	30.02	799	510	120.0	30.0
+NR_RC	325844	optimal	43	38	43	42	infeasible	0.08	no verdict (Time limit reached)	30.02	846	583	120.0	30.0
+NR_RU	191480	lower bound	70	62	78	69	infeasible	4.45	no verdict (Time limit reached)	30.44	1389	2082	120.0	30.0
+NR_RU	192317	lower bound	67	63	73	66	infeasible	8.98	no verdict (Time limit reached)	30.06	1513	2182	120.0	30.0
+NR_RU	195082	lower bound	66	65	77	65	infeasible	6.9	no verdict (Time limit reached)	30.05	1431	1701	120.0	30.0
+NR_RU	200157	lower bound	73	72	80	72	infeasible	12.74	no verdict (Time limit reached)	30.37	1566	3071	120.0	30.0
+NR_RU	209183	lower bound	60	58	78	59	infeasible	6.34	no verdict (Time limit reached)	30.03	1175	1753	120.0	30.0
+NR_RU	78066	optimal	43	39	43	42	infeasible	0.0	infeasible	13.35	909	560	120.0	30.0
+NR_RU	92188	optimal	45	42	45	44	infeasible	0.05	infeasible	6.22	755	833	120.0	30.0
+NR_RU	96944	optimal	42	36	42	41	infeasible	0.44	no verdict (Time limit reached)	30.01	816	801	120.0	30.0
+NR_RU	113733	optimal	40	38	40	39	infeasible	0.03	infeasible	1.23	785	484	120.0	30.0
+NR_RU	117352	optimal	39	32	39	38	infeasible	3.07	no verdict (Time limit reached)	30.02	756	865	120.0	30.0
+NR_VAR	215783	lower bound	94	90	102	93	infeasible	1.92	no verdict (Time limit reached)	30.07	2195	3401	120.0	30.0
+NR_VAR	221416	lower bound	76	75	78	75	infeasible	18.36	no verdict (Time limit reached)	30.04	1794	2284	120.0	30.0
+NR_VAR	231909	lower bound	74	73	79	73	infeasible	0.4	no verdict (Time limit reached)	30.07	1519	2339	120.0	30.0
+NR_VAR	235816	lower bound	59	55	60	58	infeasible	3.1	no verdict (Time limit reached)	30.03	1284	1606	120.0	30.0
+NR_VAR	237984	lower bound	57	52	59	56	infeasible	5.6	no verdict (Time limit reached)	30.02	1199	1931	120.0	30.0
+NR_VAR	148539	optimal	43	40	43	42	infeasible	0.0	infeasible	3.22	907	680	120.0	30.0
+NR_VAR	201033	optimal	69	63	69	68	infeasible	0.0	no verdict (Time limit reached)	30.03	1655	1121	120.0	30.0
+NR_VAR	212415	optimal	88	83	88	87	infeasible	3.71	no verdict (Time limit reached)	30.06	1897	2029	120.0	30.0
+NR_VAR	221476	optimal	70	67	70	69	infeasible	0.75	no verdict (Time limit reached)	30.04	1509	1135	120.0	30.0
+NR_VAR	225683	optimal	86	83	86	85	infeasible	12.56	no verdict (Time limit reached)	30.91	1955	3009	120.0	30.0

@@ -1,0 +1,35 @@
+kind	date	set	source	bytes	sha256	result_lines
+sent	2026-11-04	zip	quantavane_netres_2026-11-04.zip	2420999	951d97fc911620acf8f8a009c2dc8565b38a5c9699dd3b22606b9a82f2144ab5	
+sent	2026-11-04	NR_AD	quantavane_netres_2026-11-04.zip:NR_AD_Quantavane.csv	2937411	fa8716a7aeb79ffb203ccfa37e65a1e6fd4819a9dd0489891b5d05833b5ac94b	29036
+sent	2026-11-04	NR_LA	quantavane_netres_2026-11-04.zip:NR_LA_Quantavane.csv	26742	be2191af897fcee6dc4d13bd1a992dc69638e398c2251e55c0799bd60ee6e8f8	240
+sent	2026-11-04	NR_RC	quantavane_netres_2026-11-04.zip:NR_RC_Quantavane.csv	520791	11e7737e657a817795bba2875cd87f33911a8cce35c46bed62559fa4df342d26	4805
+sent	2026-11-04	NR_RU	quantavane_netres_2026-11-04.zip:NR_RU_Quantavane.csv	213048	2b7738da83164135789476c8d8f89f8bfef58e12312ec72706bdd93758179c12	1975
+sent	2026-11-04	NR_SP	quantavane_netres_2026-11-04.zip:NR_SP_Quantavane.csv	1559657	058e061b0aced5c6213d4f6532aa8312733a8f8cbd90fbe388632fd7ff4e7c0e	21199
+sent	2026-11-04	NR_TF	quantavane_netres_2026-11-04.zip:NR_TF_Quantavane.csv	1888505	997ffb997627fbf0da3fad9704e144932a9769842ee61f38e0370e955d9a9a6f	17952
+sent	2026-11-04	NR_VAR	quantavane_netres_2026-11-04.zip:NR_VAR_Quantavane.csv	322246	47c937479271cf0985b31c4b6414b4b5cd6a2743dba82b31c04b79743738431d	2968
+sent	2026-11-06	zip	quantavane_netres_additions_2026-11-06.zip	342745	04f07e2fc293ff7772cb933687c5e43a41af66c6fcf91f6dc40685c027bf34a4	
+sent	2026-11-06	NR_AD	quantavane_netres_additions_2026-11-06.zip:NR_AD_Quantavane.csv	392954	aaa22fa336dc2cfef4c966d4ba428b583fa1930088293284228a3082098ba756	3885
+sent	2026-11-06	NR_SP	quantavane_netres_additions_2026-11-06.zip:NR_SP_Quantavane.csv	62977	5bdfd03522e703751502525358c5e36d9d05d876e5b6d1f73b28f6a5bfea601c	1179
+sent	2026-11-06	NR_TF	quantavane_netres_additions_2026-11-06.zip:NR_TF_Quantavane.csv	570846	27fb879a5a26c051342c810cfd670bab12de0bc1411e91799e2692a2be37a22d	5994
+sent	2026-11-09	zip	quantavane_netres_additions_2026-11-09.zip	273800	5655234f3bc9b0d4fde3db3a3db231c718b7ef8243795a637292c46de84c814b	
+sent	2026-11-09	NR_AD	quantavane_netres_additions_2026-11-09.zip:NR_AD_Quantavane.csv	313213	8e7dd6f26b94b72d11cd2249e6d7453a1814dd2ff8b5367c781b1066d3c6ec84	10750
+sent	2026-11-09	NR_LA	quantavane_netres_additions_2026-11-09.zip:NR_LA_Quantavane.csv	687	70a8f94596220cd752d876b195bcebd5ee49fac262406a008b5e44db84a050c8	6
+sent	2026-11-09	NR_RC	quantavane_netres_additions_2026-11-09.zip:NR_RC_Quantavane.csv	210714	c555bad8e7a8c846ce4fb0a545f811f95dec21dc16a32c13dcb368cf7121fc96	3556
+sent	2026-11-09	NR_RU	quantavane_netres_additions_2026-11-09.zip:NR_RU_Quantavane.csv	32579	f03da9c01b31d2191410dbd68a110818dbe301326a360f0f686bf16c6e490dba	1145
+sent	2026-11-09	NR_SP	quantavane_netres_additions_2026-11-09.zip:NR_SP_Quantavane.csv	282359	8505ec3047fac3c00b983babb49d3ff329a9b18e89d33ddc17105577087bbf29	2964
+sent	2026-11-09	NR_TF	quantavane_netres_additions_2026-11-09.zip:NR_TF_Quantavane.csv	162374	0dc7071cd8f546b134966430644ec582ee1630bf8eb0e9d9d34e2d6656b615c5	5753
+sent	2026-11-09	NR_VAR	quantavane_netres_additions_2026-11-09.zip:NR_VAR_Quantavane.csv	38287	ddb673ba374100fe27fb9bb91a27c8264d3c0c42ec685c7d1a7443876248f94d	630
+earlier	2026-11-03	NR_SP	runs/sched/upload_prev_20261104/NR_SP_Quantavane.csv	1453456	a09ac72bf8e7c97b204420679dee1230850a2de5244986e7f81a103ba0a3c5e2	20355
+earlier	2026-11-03	NR_AD	runs/sched/upload_prev_20261104/NR_AD_Quantavane.csv	2544917	0d20e6889e0101387fbbcdeff1673337d0d24bb5b298965f9ea3d67e3e882467	25166
+earlier	2026-11-03	NR_LA	runs/sched/upload_prev_20261104/NR_LA_Quantavane.csv	26742	7faaa8906102db2a9d2f33a5d32446248c2927b988ebee4e96e599754bf05af4	240
+earlier	2026-11-03	NR_TF	runs/sched/upload_prev_20261104/NR_TF_Quantavane.csv	1317992	fb75b45a82ffbc01987d3545e9424de2e8acbe6b45346b4c2736569ef0dc0d33	11965
+earlier	2026-11-03	NR_RC	runs/sched/upload_prev_20261104/NR_RC_Quantavane.csv	520791	edbdd16286d13d6112619ae846563e681f275af54508878f8c9941c0fe6dbb14	4805
+earlier	2026-11-03	NR_RU	runs/sched/upload_prev_20261104/NR_RU_Quantavane.csv	213048	2d14731ef2b1915951aa294299510f74a8bd2ddc548229d3ad97f2092011645a	1975
+earlier	2026-11-03	NR_VAR	runs/sched/upload_prev_20261104/NR_VAR_Quantavane.csv	322246	e8b690a1b6ab92aed6e73d5e21de3c9b358a872206e5f9dfc574d0197074c783	2968
+listed	2026-11-09	NR_SP	http://solutionsupdate.ugent.be/sites/default/files/results/josecoelho/2026-11-09/NR_SP_Q.csv	4035988	b691f743ddbe2bd922476760dc81ea6d71252a9e29e96f66010940611c87bf72	45697
+listed	2026-11-09	NR_AD	http://solutionsupdate.ugent.be/sites/default/files/results/josecoelho/2026-11-09/NR_AD_Q.csv	6793309	d05572f443845e2324dd98d2a64c299e40a37a3871429dc08e77d707820f5749	68837
+listed	2026-11-09	NR_LA	http://solutionsupdate.ugent.be/sites/default/files/results/josecoelho/2026-11-09/NR_LA_Q.csv	54261	552b108bad445e855071058611b5b31ba87805c60aa720156c363d1f0b4a1e36	486
+listed	2026-11-09	NR_TF	http://solutionsupdate.ugent.be/sites/default/files/results/josecoelho/2026-11-09/NR_TF_Q.csv	4243374	416b6ed5ca86e65fb9e39aed0cb205c6de8e9e7968e45244785636ab993de92e	41664
+listed	2026-11-09	NR_RC	http://solutionsupdate.ugent.be/sites/default/files/results/josecoelho/2026-11-09/NR_RC_Q.csv	1336855	1d555b5e06f4b8a503a0ac77cd5120827cdbc69a7734aa73ad698488091dac82	13166
+listed	2026-11-09	NR_RU	http://solutionsupdate.ugent.be/sites/default/files/results/josecoelho/2026-11-09/NR_RU_Q.csv	500048	1ecf534a50f81b7d6173d298fd470dc1670c103687103be2146e7ce86e499627	5095
+listed	2026-11-09	NR_VAR	http://solutionsupdate.ugent.be/sites/default/files/results/josecoelho/2026-11-09/NR_VAR_Q.csv	701250	2af1a233fa5e81581814444d0346f61c4eabd6141fffbe3aed3ac6a30ea8da36	6566

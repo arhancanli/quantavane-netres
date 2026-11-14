@@ -1,0 +1,671 @@
+{
+ "vanhoucke2018tool": {
+  "doi": "10.1016/j.cie.2018.02.001",
+  "ok": true,
+  "title": "A tool to test and validate algorithms for the resource-constrained project scheduling problem",
+  "type": "journal-article",
+  "container": "Computers &amp; Industrial Engineering",
+  "volume": "118",
+  "issue": null,
+  "page": "251-265",
+  "year": 2018,
+  "authors": [
+   "Mario Vanhoucke",
+   "José Coelho"
+  ]
+ },
+ "kolisch1997psplib": {
+  "doi": "10.1016/s0377-2217(96)00170-1",
+  "ok": true,
+  "title": "PSPLIB - A project scheduling problem library",
+  "type": "journal-article",
+  "container": "European Journal of Operational Research",
+  "volume": "96",
+  "issue": "1",
+  "page": "205-216",
+  "year": 1997,
+  "authors": [
+   "Rainer Kolisch",
+   "Arno Sprecher"
+  ]
+ },
+ "kolisch1995progen": {
+  "doi": "10.1287/mnsc.41.10.1693",
+  "ok": true,
+  "title": "Characterization and Generation of a General Class of Resource-Constrained Project Scheduling Problems",
+  "type": "journal-article",
+  "container": "Management Science",
+  "volume": "41",
+  "issue": "10",
+  "page": "1693-1703",
+  "year": 1995,
+  "authors": [
+   "Rainer Kolisch",
+   "Arno Sprecher",
+   "Andreas Drexl"
+  ]
+ },
+ "demeulemeester1992bb": {
+  "doi": "10.1287/mnsc.38.12.1803",
+  "ok": true,
+  "title": "A Branch-and-Bound Procedure for the Multiple Resource-Constrained Project Scheduling Problem",
+  "type": "journal-article",
+  "container": "Management Science",
+  "volume": "38",
+  "issue": "12",
+  "page": "1803-1818",
+  "year": 1992,
+  "authors": [
+   "Erik Demeulemeester",
+   "Willy Herroelen"
+  ]
+ },
+ "klein1999destructive": {
+  "doi": "10.1016/s0377-2217(97)00442-6",
+  "ok": true,
+  "title": "Computing lower bounds by destructive improvement: An application to resource-constrained project scheduling",
+  "type": "journal-article",
+  "container": "European Journal of Operational Research",
+  "volume": "112",
+  "issue": "2",
+  "page": "322-346",
+  "year": 1999,
+  "authors": [
+   "Robert Klein",
+   "Armin Scholl"
+  ]
+ },
+ "debels2007decomposition": {
+  "doi": "10.1287/opre.1060.0358",
+  "ok": true,
+  "title": "A Decomposition-Based Genetic Algorithm for the Resource-Constrained Project-Scheduling Problem",
+  "type": "journal-article",
+  "container": "Operations Research",
+  "volume": "55",
+  "issue": "3",
+  "page": "457-469",
+  "year": 2007,
+  "authors": [
+   "Dieter Debels",
+   "Mario Vanhoucke"
+  ]
+ },
+ "vanhoucke2008adequacy": {
+  "doi": "10.1016/j.ejor.2007.03.032",
+  "ok": true,
+  "title": "An evaluation of the adequacy of project network generators with systematically sampled networks",
+  "type": "journal-article",
+  "container": "European Journal of Operational Research",
+  "volume": "187",
+  "issue": "2",
+  "page": "511-524",
+  "year": 2008,
+  "authors": [
+   "Mario Vanhoucke",
+   "José Coelho",
+   "Dieter Debels",
+   "Broos Maenhout",
+   "Luís V. Tavares"
+  ]
+ },
+ "vanhoucke2007evm": {
+  "doi": "10.1057/palgrave.jors.2602296",
+  "ok": true,
+  "title": "A simulation and evaluation of earned value metrics to forecast the project duration",
+  "type": "journal-article",
+  "container": "Journal of the Operational Research Society",
+  "volume": "58",
+  "issue": "10",
+  "page": "1361-1374",
+  "year": 2007,
+  "authors": [
+   "M Vanhoucke",
+   "S Vandevoorde"
+  ]
+ },
+ "demeulemeester2003rangen": {
+  "doi": "10.1023/a:1022283403119",
+  "ok": true,
+  "title": "RanGen: A Random Network Generator for Activity-on-the-Node Networks",
+  "type": "journal-article",
+  "container": "Journal of Scheduling",
+  "volume": "6",
+  "issue": "1",
+  "page": "17-38",
+  "year": 2003,
+  "authors": [
+   "Erik Demeulemeester",
+   "Mario Vanhoucke",
+   "Willy Herroelen"
+  ]
+ },
+ "schutt2011cumulative": {
+  "doi": "10.1007/s10601-010-9103-2",
+  "ok": true,
+  "title": "Explaining the cumulative propagator",
+  "type": "journal-article",
+  "container": "Constraints",
+  "volume": "16",
+  "issue": "3",
+  "page": "250-282",
+  "year": 2010,
+  "authors": [
+   "Andreas Schutt",
+   "Thibaut Feydy",
+   "Peter J. Stuckey",
+   "Mark G. Wallace"
+  ]
+ },
+ "schutt2013rcpspmax": {
+  "doi": "10.1007/s10951-012-0285-x",
+  "ok": true,
+  "title": "Solving RCPSP/max by lazy clause generation",
+  "type": "journal-article",
+  "container": "Journal of Scheduling",
+  "volume": "16",
+  "issue": "3",
+  "page": "273-289",
+  "year": 2012,
+  "authors": [
+   "Andreas Schutt",
+   "Thibaut Feydy",
+   "Peter J. Stuckey",
+   "Mark G. Wallace"
+  ]
+ },
+ "vilim2015fds": {
+  "doi": "10.1007/978-3-319-18008-3_30",
+  "ok": true,
+  "title": "Failure-Directed Search for Constraint-Based Scheduling",
+  "type": "book-chapter",
+  "container": "Lecture Notes in Computer Science",
+  "volume": null,
+  "issue": null,
+  "page": "437-453",
+  "year": 2015,
+  "authors": [
+   "Petr Vilím",
+   "Philippe Laborie",
+   "Paul Shaw"
+  ]
+ },
+ "laborie2018cpo": {
+  "doi": "10.1007/s10601-018-9281-x",
+  "ok": true,
+  "title": "IBM ILOG CP optimizer for scheduling",
+  "type": "journal-article",
+  "container": "Constraints",
+  "volume": "23",
+  "issue": "2",
+  "page": "210-250",
+  "year": 2018,
+  "authors": [
+   "Philippe Laborie",
+   "Jérôme Rogerie",
+   "Paul Shaw",
+   "Petr Vilím"
+  ]
+ },
+ "brucker1999survey": {
+  "doi": "10.1016/s0377-2217(98)00204-5",
+  "ok": true,
+  "title": "Resource-constrained project scheduling: Notation, classification, models, and methods",
+  "type": "journal-article",
+  "container": "European Journal of Operational Research",
+  "volume": "112",
+  "issue": "1",
+  "page": "3-41",
+  "year": 1999,
+  "authors": [
+   "Peter Brucker",
+   "Andreas Drexl",
+   "Rolf Möhring",
+   "Klaus Neumann",
+   "Erwin Pesch"
+  ]
+ },
+ "hartmann2022survey": {
+  "doi": "10.1016/j.ejor.2021.05.004",
+  "ok": true,
+  "title": "An updated survey of variants and extensions of the resource-constrained project scheduling problem",
+  "type": "journal-article",
+  "container": "European Journal of Operational Research",
+  "volume": "297",
+  "issue": "1",
+  "page": "1-14",
+  "year": 2022,
+  "authors": [
+   "Sönke Hartmann",
+   "Dirk Briskorn"
+  ]
+ },
+ "kolisch2006heuristics": {
+  "doi": "10.1016/j.ejor.2005.01.065",
+  "ok": true,
+  "title": "Experimental investigation of heuristics for resource-constrained project scheduling: An update",
+  "type": "journal-article",
+  "container": "European Journal of Operational Research",
+  "volume": "174",
+  "issue": "1",
+  "page": "23-37",
+  "year": 2006,
+  "authors": [
+   "Rainer Kolisch",
+   "Sönke Hartmann"
+  ]
+ },
+ "blazewicz1983complexity": {
+  "doi": "10.1016/0166-218x(83)90012-4",
+  "ok": true,
+  "title": "Scheduling subject to resource constraints: classification and complexity",
+  "type": "journal-article",
+  "container": "Discrete Applied Mathematics",
+  "volume": "5",
+  "issue": "1",
+  "page": "11-24",
+  "year": 1983,
+  "authors": [
+   "J. Blazewicz",
+   "J.K. Lenstra",
+   "A.H.G.Rinnooy Kan"
+  ]
+ },
+ "coelho2018composite": {
+  "doi": "10.1016/j.cor.2018.01.017",
+  "ok": true,
+  "title": "An exact composite lower bound strategy for the resource-constrained project scheduling problem",
+  "type": "journal-article",
+  "container": "Computers &amp; Operations Research",
+  "volume": "93",
+  "issue": null,
+  "page": "135-150",
+  "year": 2018,
+  "authors": [
+   "José Coelho",
+   "Mario Vanhoucke"
+  ]
+ },
+ "coelho2020core": {
+  "doi": "10.1016/j.cor.2020.104976",
+  "ok": true,
+  "title": "Going to the core of hard resource-constrained project scheduling instances",
+  "type": "journal-article",
+  "container": "Computers &amp; Operations Research",
+  "volume": "121",
+  "issue": null,
+  "page": "104976",
+  "year": 2020,
+  "authors": [
+   "José Coelho",
+   "Mario Vanhoucke"
+  ]
+ },
+ "messelis2014selection": {
+  "doi": "10.1016/j.ejor.2013.08.021",
+  "ok": true,
+  "title": "An automatic algorithm selection approach for the multi-mode resource-constrained project scheduling problem",
+  "type": "journal-article",
+  "container": "European Journal of Operational Research",
+  "volume": "233",
+  "issue": "3",
+  "page": "511-528",
+  "year": 2014,
+  "authors": [
+   "Tommy Messelis",
+   "Patrick De Causmaecker"
+  ]
+ },
+ "smithmiles2012difficulty": {
+  "doi": "10.1016/j.cor.2011.07.006",
+  "ok": true,
+  "title": "Measuring instance difficulty for combinatorial optimization problems",
+  "type": "journal-article",
+  "container": "Computers &amp; Operations Research",
+  "volume": "39",
+  "issue": "5",
+  "page": "875-889",
+  "year": 2012,
+  "authors": [
+   "Kate Smith-Miles",
+   "Leo Lopes"
+  ]
+ },
+ "rice1976selection": {
+  "doi": "10.1016/s0065-2458(08)60520-3",
+  "ok": true,
+  "title": "The Algorithm Selection Problem",
+  "type": "book-chapter",
+  "container": "Advances in Computers",
+  "volume": null,
+  "issue": null,
+  "page": "65-118",
+  "year": 1976,
+  "authors": [
+   "John R. Rice"
+  ]
+ },
+ "kerschke2019selection": {
+  "doi": "10.1162/evco_a_00242",
+  "ok": true,
+  "title": "Automated Algorithm Selection: Survey and Perspectives",
+  "type": "journal-article",
+  "container": "Evolutionary Computation",
+  "volume": "27",
+  "issue": "1",
+  "page": "3-45",
+  "year": 2019,
+  "authors": [
+   "Pascal Kerschke",
+   "Holger H. Hoos",
+   "Frank Neumann",
+   "Heike Trautmann"
+  ]
+ },
+ "bengio2021mlco": {
+  "doi": "10.1016/j.ejor.2020.07.063",
+  "ok": true,
+  "title": "Machine learning for combinatorial optimization: A methodological tour d’horizon",
+  "type": "journal-article",
+  "container": "European Journal of Operational Research",
+  "volume": "290",
+  "issue": "2",
+  "page": "405-421",
+  "year": 2021,
+  "authors": [
+   "Yoshua Bengio",
+   "Andrea Lodi",
+   "Antoine Prouvost"
+  ]
+ },
+ "pritsker1969multiproject": {
+  "doi": "10.1287/mnsc.16.1.93",
+  "ok": true,
+  "title": "Multiproject Scheduling with Limited Resources: A Zero-One Programming Approach",
+  "type": "journal-article",
+  "container": "Management Science",
+  "volume": "16",
+  "issue": "1",
+  "page": "93-108",
+  "year": 1969,
+  "authors": [
+   "A. Alan B. Pritsker",
+   "Lawrence J. Waiters",
+   "Philip M. Wolfe"
+  ]
+ },
+ "horbach2010sat": {
+  "doi": "10.1007/s10479-010-0693-2",
+  "ok": true,
+  "title": "A Boolean satisfiability approach to the resource-constrained project scheduling problem",
+  "type": "journal-article",
+  "container": "Annals of Operations Research",
+  "volume": "181",
+  "issue": "1",
+  "page": "89-107",
+  "year": 2010,
+  "authors": [
+   "Andrei Horbach"
+  ]
+ },
+ "berthold2010cip": {
+  "doi": "10.1007/978-3-642-13520-0_34",
+  "ok": true,
+  "title": "A Constraint Integer Programming Approach for Resource-Constrained Project Scheduling",
+  "type": "book-chapter",
+  "container": "Lecture Notes in Computer Science",
+  "volume": null,
+  "issue": null,
+  "page": "313-317",
+  "year": 2010,
+  "authors": [
+   "Timo Berthold",
+   "Stefan Heinz",
+   "Marco E. Lübbecke",
+   "Rolf H. Möhring",
+   "Jens Schulz"
+  ]
+ },
+ "baptiste2000constraint": {
+  "doi": "10.1023/a:1009822502231",
+  "ok": true,
+  "title": "Constraint Propagation and Decomposition Techniques for Highly Disjunctive and Highly Cumulative Project Scheduling Problems",
+  "type": "journal-article",
+  "container": "Constraints",
+  "volume": "5",
+  "issue": "1-2",
+  "page": "119-139",
+  "year": 2000,
+  "authors": [
+   "Philippe Baptiste",
+   "Claude Le Pape"
+  ]
+ },
+ "brucker2000lp": {
+  "doi": "10.1016/s0377-2217(99)00489-0",
+  "ok": true,
+  "title": "A linear programming and constraint propagation-based lower bound for the RCPSP",
+  "type": "journal-article",
+  "container": "European Journal of Operational Research",
+  "volume": "127",
+  "issue": "2",
+  "page": "355-362",
+  "year": 2000,
+  "authors": [
+   "Peter Brucker",
+   "Sigrid Knust"
+  ]
+ },
+ "mingozzi1998exact": {
+  "doi": "10.1287/mnsc.44.5.714",
+  "ok": true,
+  "title": "An Exact Algorithm for the Resource-Constrained Project Scheduling Problem Based on a New Mathematical Formulation",
+  "type": "journal-article",
+  "container": "Management Science",
+  "volume": "44",
+  "issue": "5",
+  "page": "714-729",
+  "year": 1998,
+  "authors": [
+   "Aristide Mingozzi",
+   "Vittorio Maniezzo",
+   "Salvatore Ricciardelli",
+   "Lucio Bianco"
+  ]
+ },
+ "vilim2011ttef": {
+  "doi": "10.1007/978-3-642-21311-3_22",
+  "ok": true,
+  "title": "Timetable Edge Finding Filtering Algorithm for Discrete Cumulative Resources",
+  "type": "book-chapter",
+  "container": "Lecture Notes in Computer Science",
+  "volume": null,
+  "issue": null,
+  "page": "230-245",
+  "year": 2011,
+  "authors": [
+   "Petr Vilím"
+  ]
+ },
+ "herroelen1998survey": {
+  "doi": "10.1016/s0305-0548(97)00055-5",
+  "ok": true,
+  "title": "Resource-constrained project scheduling: A survey of recent developments",
+  "type": "journal-article",
+  "container": "Computers &amp; Operations Research",
+  "volume": "25",
+  "issue": "4",
+  "page": "279-302",
+  "year": 1998,
+  "authors": [
+   "Willy Herroelen",
+   "Bert De Reyck",
+   "Erik Demeulemeester"
+  ]
+ },
+ "patterson1976structure": {
+  "doi": "10.1002/nav.3800230110",
+  "ok": true,
+  "title": "Project scheduling: The effects of problem structure on heuristic performance",
+  "type": "journal-article",
+  "container": "Naval Research Logistics Quarterly",
+  "volume": "23",
+  "issue": "1",
+  "page": "95-123",
+  "year": 1976,
+  "authors": [
+   "James H. Patterson"
+  ]
+ },
+ "tavares1999morphology": {
+  "doi": "10.1016/s0377-2217(99)00150-2",
+  "ok": true,
+  "title": "The risk of delay of a project in terms of the morphology of its network",
+  "type": "journal-article",
+  "container": "European Journal of Operational Research",
+  "volume": "119",
+  "issue": "2",
+  "page": "510-537",
+  "year": 1999,
+  "authors": [
+   "L. Valadares Tavares",
+   "J. Antunes Ferreira",
+   "J. Silva Coelho"
+  ]
+ },
+ "mastor1970line": {
+  "doi": "10.1287/mnsc.16.11.728",
+  "ok": true,
+  "title": "An Experimental Investigation and Comparative Evaluation of Production Line Balancing Techniques",
+  "type": "journal-article",
+  "container": "Management Science",
+  "volume": "16",
+  "issue": "11",
+  "page": "728-746",
+  "year": 1970,
+  "authors": [
+   "Anthony A. Mastor"
+  ]
+ },
+ "vanhoucke2010measuring": {
+  "doi": "10.1007/978-1-4419-1014-1",
+  "ok": true,
+  "title": "Measuring Time",
+  "type": "book",
+  "container": "International Series in Operations Research &amp; Management Science",
+  "volume": null,
+  "issue": null,
+  "page": null,
+  "year": 2009,
+  "authors": [
+   "Mario Vanhoucke"
+  ]
+ },
+ "perron2023cpsatlp": {
+  "doi": "10.4230/LIPIcs.CP.2023.3",
+  "ok": true,
+  "title": "The CP-SAT-LP Solver (Invited Talk)",
+  "type": "proceedings-article",
+  "container": "Leibniz International Proceedings in Informatics (LIPIcs)",
+  "volume": null,
+  "issue": null,
+  "page": null,
+  "year": 2023,
+  "authors": [
+   "Laurent Perron",
+   "Frédéric Didier",
+   "Steven Gay"
+  ]
+ },
+ "huangfu2018highs": {
+  "doi": "10.1007/s12532-017-0130-5",
+  "ok": true,
+  "title": "Parallelizing the dual revised simplex method",
+  "type": "journal-article",
+  "container": "Mathematical Programming Computation",
+  "volume": "10",
+  "issue": "1",
+  "page": "119-142",
+  "year": 2017,
+  "authors": [
+   "Q. Huangfu",
+   "J. A. J. Hall"
+  ]
+ },
+ "gocht2022auditable": {
+  "doi": "10.4230/LIPIcs.CP.2022.25",
+  "ok": true,
+  "title": "An Auditable Constraint Programming Solver",
+  "type": "proceedings-article",
+  "container": "Leibniz International Proceedings in Informatics (LIPIcs)",
+  "volume": null,
+  "issue": null,
+  "page": null,
+  "year": 2022,
+  "authors": [
+   "Stephan Gocht",
+   "Ciaran McCreesh",
+   "Jakob Nordström"
+  ]
+ },
+ "flippo2024proof": {
+  "doi": "10.4230/LIPIcs.CP.2024.11",
+  "ok": true,
+  "title": "A Multi-Stage Proof Logging Framework to Certify the Correctness of CP Solvers",
+  "type": "proceedings-article",
+  "container": "Leibniz International Proceedings in Informatics (LIPIcs)",
+  "volume": null,
+  "issue": null,
+  "page": null,
+  "year": 2024,
+  "authors": [
+   "Maarten Flippo",
+   "Konstantin Sidorov",
+   "Imko Marijnissen",
+   "Jeff Smits",
+   "Emir Demirović"
+  ]
+ },
+ "coelho2023newinstances": {
+  "doi": "10.1016/j.cor.2023.106165",
+  "ok": true,
+  "title": "New resource-constrained project scheduling instances for testing (meta-)heuristic scheduling algorithms",
+  "type": "journal-article",
+  "container": "Computers &amp; Operations Research",
+  "volume": "153",
+  "issue": null,
+  "page": "106165",
+  "year": 2023,
+  "authors": [
+   "José Coelho",
+   "Mario Vanhoucke"
+  ]
+ },
+ "guo2023ranking": {
+  "doi": "10.1016/j.ejor.2022.08.042",
+  "ok": true,
+  "title": "A prediction model for ranking branch-and-bound procedures for the resource-constrained project scheduling problem",
+  "type": "journal-article",
+  "container": "European Journal of Operational Research",
+  "volume": "306",
+  "issue": "2",
+  "page": "579-595",
+  "year": 2023,
+  "authors": [
+   "Weikang Guo",
+   "Mario Vanhoucke",
+   "José Coelho"
+  ]
+ },
+ "ortools": {
+  "ok": true,
+  "note": "not a DOI item; written by hand in check_refs.py"
+ },
+ "solutionsupdate": {
+  "ok": true,
+  "note": "not a DOI item; written by hand in check_refs.py"
+ },
+ "sklearn": {
+  "ok": true,
+  "note": "not a DOI item; written by hand in check_refs.py"
+ }
+}

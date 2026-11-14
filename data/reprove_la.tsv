@@ -1,0 +1,7 @@
+id	claim	ub_1109	verdict	secs	seconds	workers
+270264	86	86	no verdict (UNKNOWN)	1200.0	1200.0	1
+285864	88	88	infeasible	40.0	1200.0	1
+309864	82	82	infeasible	24.7	1200.0	1
+345864	99	99	infeasible	133.7	1200.0	1
+353064	88	88	no verdict (UNKNOWN)	1200.0	1200.0	1
+435880	67	67	infeasible	71.9	1200.0	1

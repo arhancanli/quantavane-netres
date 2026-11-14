@@ -1,0 +1,78 @@
+{
+ "fit_utc": "2026-11-09T03:55:11Z",
+ "train_rows": 71335,
+ "train_finds": 12072,
+ "lanes": {
+  "covering-factory": {
+   "rows": 64111,
+   "finds": 61,
+   "kept": 20000
+  },
+  "covering-designs-native": {
+   "rows": 22905,
+   "finds": 28,
+   "kept": 20000
+  },
+  "codes-qt-search": {
+   "rows": 9180,
+   "finds": 20,
+   "kept": 9180
+  },
+  "spherical-codes-table-starts": {
+   "rows": 2155,
+   "finds": 1963,
+   "kept": 2155
+  },
+  "sched-netres-lb": {
+   "rows": 38614,
+   "finds": 23360,
+   "kept": 20000
+  }
+ },
+ "iters": 148,
+ "feats": [
+  "log_budget",
+  "log_nprev",
+  "prev_find",
+  "fam_rate",
+  "fam_logn",
+  "size_pct",
+  "relgap_pct",
+  "lane=covering-factory",
+  "lane=covering-designs-native",
+  "lane=codes-qt-search",
+  "lane=spherical-codes-table-starts",
+  "lane=sched-netres-lb"
+ ],
+ "params": {
+  "learning_rate": 0.05,
+  "max_iter": 300,
+  "max_leaf_nodes": 31,
+  "min_samples_leaf": 100,
+  "l2_regularization": 1.0,
+  "early_stopping": true,
+  "validation_fraction": 0.15,
+  "n_iter_no_change": 30,
+  "random_state": 0
+ },
+ "cap": 20000,
+ "smooth": 20.0,
+ "code_sha256": "3323327aa5421088c28ea832fd21a8555fa10af8c927bf6511ee91d9239857b8",
+ "cell_A": {
+  "cell": "NetRes re-runs: pass 3b lines after v1's cell 2 (NR_TF from its 282nd line, NR_AD; time split)",
+  "rows": 5582,
+  "file": "runs/sched/model_rerun_x1/pred_A.tsv",
+  "sha256": "4e32a9d4c1ba5e67044b2878265b3eb110d99a541ad9ea65ca5021d4a85456e2",
+  "mean_p": 0.15618674457203774,
+  "distinct_p": 4153
+ },
+ "cell_B": {
+  "cell": "NetRes re-runs: lb5 90 s Kaggle re-runs of the 947 pass-3 misses pass 3b never ran (instance set held out)",
+  "rows": 947,
+  "file": "runs/sched/model_rerun_x1/pred_B.tsv",
+  "sha256": "63016020359127f96e21e77e0d9bc3b470731d49a5fdbc8bdf006d73fe429654",
+  "mean_p": 0.13006207356563412,
+  "distinct_p": 792
+ },
+ "seconds": 5.7
+}

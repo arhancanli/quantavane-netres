@@ -1,0 +1,15 @@
+lane	version	cell	kind	control_arm	n	K	finds_in_cell	model_finds	control_finds	p_model_vs_random	p_control_vs_random
+sched-netres-lb	v1	NetRes NR_TF pass 3 (set held out)	offline	plain	6834	1366	4961	1357	963	2.35e-197	0.975
+sched-netres-lb	v1	NetRes pass 1 to pass 3 (time split)	offline	plain	15854	3170	7349	2575	1587	0	1.6e-06
+sched-netres-lb	v1	NetRes pass 3 remainder (prospective)	prospective	plain	885	177	334	166	81	6.96e-70	0.00915
+sched-netres-lb	v1	NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1)	prospective	plain	5384	1076	4854	1012	802	3.09e-07	1
+sched-netres-lb	v2	NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1)	prospective	v1	5384	1076	4854	1065	1012	8.98e-39	3.09e-07
+sched-netres-lb	a1	NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1)	prospective	v1	5384	1076	4854	1067	1012	4.53e-41	3.09e-07
+sched-netres-lb	v1	NetRes pass 3b at 40 s (prospective)	prospective	plain	9982	1996	2693	1167	739	1.06e-249	1.65e-28
+sched-netres-lb	v1	NetRes pass 3c (prospective)	prospective	plain	5377	1075	2288	1020	438	0	0.916
+sched-netres-rerun	v1	NetRes re-runs: NR_VAR held out	offline	plain	1121	224	62	46	39	1.9e-21	2.67e-14
+sched-netres-rerun	v1	NetRes re-runs: pass 3b after the snapshot (prospective)	prospective	plain	2000	400	307	150	65	2.4e-36	0.312
+sched-netres-rerun	v2	NetRes re-runs: pass 3b lines after v1's cell 2 (NR_TF from its 282nd line, NR_AD; time split)	offline	plain	5582	1116	1957	701	423	2.06e-100	0.0145
+sched-netres-rerun	v2	NetRes re-runs: lb5 90 s Kaggle re-runs of the 947 pass-3 misses pass 3b never ran (instance set held out)	offline	plain	947	189	337	129	49	8.78e-25	0.999
+sched-netres-rerun	x1	NetRes re-runs: pass 3b lines after v1's cell 2 (NR_TF from its 282nd line, NR_AD; time split)	offline	plain	5582	1116	1957	665	423	6.59e-79	0.0145
+sched-netres-rerun	x1	NetRes re-runs: lb5 90 s Kaggle re-runs of the 947 pass-3 misses pass 3b never ran (instance set held out)	offline	plain	947	189	337	126	49	1.41e-22	0.999

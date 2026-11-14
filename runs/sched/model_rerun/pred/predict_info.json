@@ -1,0 +1,13 @@
+{
+ "train": 2400,
+ "iters": 96,
+ "cell2_candidates": 8529,
+ "cell3_pool": 3089,
+ "cell3_sample": 750,
+ "cell3_K": 150,
+ "overlap": 34,
+ "cell2_mean_p": 0.2748104299074379,
+ "cell3_mean_p": 0.48869518606002854,
+ "cell3_model_mean_p": 0.7685612932885137,
+ "cell3_control_mean_p": 0.4866915130077183
+}

@@ -1,0 +1,1823 @@
+{
+ "source": "engine/models/registry.json",
+ "sha256": "6c1e25dd35e581d194cd7a78a734d77d13eff16472b19c3985ab1897baa9623b",
+ "lanes": {
+  "sched-netres-lb": {
+   "plain_method": "the NetRes lower-bound queue in its sequential order (runs/kaggle_netres/build.py: sets in netres.SETS order, ids ascending); every instance gets the same destructive CP-SAT budget",
+   "held_out": [
+    "NetRes NR_TF pass 3 (set held out)",
+    "NetRes pass 1 to pass 3 (time split)",
+    "NetRes pass 3 remainder (prospective)",
+    "NetRes pass 3b at 40 s (prospective)",
+    "NetRes pass 3c (prospective)",
+    "NetRes lb6 (prospective, v2 vs plain)",
+    "NetRes lb6 (prospective, v2 vs v1 champion)",
+    "NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1)"
+   ],
+   "held_out_note": "Fixed 7 Nov 2026 16:1x Dubai, before any model was fit, on a frozen snapshot of every NR_*/lb/RESULTS.tsv, netres_lb.log and netres_lb_pass3.log taken 7 Nov 12:02:28 UTC. A row's pass comes from the log that printed it: pass 1 (1-3 Nov, 30 s, caps from the 1 Nov published LB; NR_SP 14,466 rows, NR_AD 575) and pass 3 (7 Nov, 15 s, caps from the refreshed published LB; NR_RU, NR_VAR, NR_RC, NR_TF, NR_AD so far). A find = a row whose record has LB or CLOSED (a proven lower bound above the run's starting LB). Cells: (1) NR_TF held out: train on every other snapshot row, test on NR_TF's pass-3 rows; (2) time split: train on pass 1 only, test on the pass-3 rows of NR_RU, NR_VAR, NR_RC and NR_AD (disjoint from cell 1's test); (3) prospective: the model fit on the whole snapshot ranks the pass-3 instances not yet run at the snapshot (rest of NR_AD, NR_SP), scored when pass 3 ends; (4) prospective: the same model ranks pass 3b's candidates (the pass-3 misses, 40 s, runs/sched/pass3b.py), scored from lb3b/RESULTS.tsv rows written after the snapshot. Per cell: K = 20% of its instances (rounded down); model arm = the K instances the model ranks highest, control arm = the first K in the plain order, both judged by the runs already made at the same budget (every test instance was run, so each arm's yield is exactly what running only its K would have given); finds decide (registry verdict). Also reported: random K (exact mean K x base rate and the 2.5-97.5% range of 2,000 seeded draws), K = 10% and 50%, and the LB units gained. Features: only what is known before a run (the network and resource profile from netres.network()/resset() and the ResSet header, the run's starting LB and UB); no set identity, no budget, no earlier run outcome. Model v1 fixed in advance: scikit-learn HistGradientBoostingClassifier(learning_rate 0.05, max_iter 400, max_leaf_nodes 31, min_samples_leaf 40, l2_regularization 1.0, early stopping on 15% of the training rows, random_state 0). Added 7 Nov 16:5x Dubai, before any of its rows or cell 3's score were looked at: pass 3 ended at 16:39 when its process pool broke, so cell 3 is what pass 3 itself wrote after the snapshot (as registered); (5) NetRes pass 3c (prospective) = the open instances pass 3 never ran, run by runs/sched/pass3b.py --missing (15 s, caps from the current LB, rows in NR_*/lb3c/RESULTS.tsv), ranked by the same frozen predictions, same K rule and verdict, scored when pass 3c ends. | 8 Nov 2026 17:25 UTC (21:25 Dubai): two prospective cells added for v2 before any lb6 outcome existed on this machine (no NR_*/lb6 folder; the four lb6 Kaggle kernels still RUNNING, nothing fetched): the 7,200 lb6 tasks (runs/kaggle_netres/dataset_lb6/tasks.jsonl, 90 s each, chosen by v1's order_lb6_20261108.tsv), K = 20% of the scored rows; arm v2 = its frozen top-K, control = the plain first-K, and separately control = v1's frozen top-K (a loss to v1 counts as a loss). Code engine/models/sched_netres_rank_v2.py.",
+   "champion": "v2",
+   "versions": [
+    {
+     "version": "v1",
+     "status": "former champion",
+     "code": "engine/models/sched_netres_rank.py",
+     "sha256": "a9eeaa36695420d292094661a4ab8b4747683a4089fb0fb6332a32a9a5f7e388",
+     "model": "HistGradientBoostingClassifier on 33 pre-run features (network: durations, arcs, order strength, critical path, float; resources: RU and RC of the ResSet header, capacities, demands, energy bound, resource strength and overload of the earliest-start schedule; the run's starting LB and UB against the trivial bound max(critical path, energy bound)); ranks a queue by P(a proven bound above the starting LB)",
+     "ab": [
+      {
+       "run": "sched-netres-lb v1 offline A/B on the 7 Nov snapshot (NetRes NR_TF pass 3 (set held out))",
+       "cell": "NetRes NR_TF pass 3 (set held out)",
+       "objective": "maximize",
+       "model": {
+        "runs": 1366,
+        "finds": 1357,
+        "best": null,
+        "median": null,
+        "lb_units": 5129
+       },
+       "control": {
+        "runs": 1366,
+        "finds": 963,
+        "best": null,
+        "median": null,
+        "lb_units": 3003
+       },
+       "random": {
+        "runs": 1366,
+        "finds_mean": 991.6,
+        "finds_2_5_to_97_5": [
+         962.975,
+         1020.0
+        ]
+       },
+       "test_rows": 6834,
+       "train_rows": 30895,
+       "base_rate": 0.7259,
+       "auc": 0.8841,
+       "at_10_and_50": {
+        "10%": {
+         "model": 683,
+         "control": 469,
+         "random_mean": 495.8,
+         "K": 683
+        },
+        "50%": {
+         "model": 3250,
+         "control": 2524,
+         "random_mean": 2480.5,
+         "K": 3417
+        }
+       },
+       "verdict": "model (finds 1,357 vs 963 at K = 1,366 of 6,834; random 992)",
+       "rules_note": "one-feature rules chosen after the fact, same K: relgap (UB-LB)/UB descending 1,317, gap descending 1,296, LB minus trivial bound ascending 1,278",
+       "evidence": "runs/sched/model_v1/eval_cells12.json"
+      },
+      {
+       "run": "sched-netres-lb v1 offline A/B on the 7 Nov snapshot (NetRes pass 1 to pass 3 (time split))",
+       "cell": "NetRes pass 1 to pass 3 (time split)",
+       "objective": "maximize",
+       "model": {
+        "runs": 3170,
+        "finds": 2575,
+        "best": null,
+        "median": null,
+        "lb_units": 8551
+       },
+       "control": {
+        "runs": 3170,
+        "finds": 1587,
+        "best": null,
+        "median": null,
+        "lb_units": 3409
+       },
+       "random": {
+        "runs": 3170,
+        "finds_mean": 1469.4,
+        "finds_2_5_to_97_5": [
+         1421.0,
+         1519.0
+        ]
+       },
+       "test_rows": 15854,
+       "train_rows": 15041,
+       "base_rate": 0.4635,
+       "auc": 0.8126,
+       "at_10_and_50": {
+        "10%": {
+         "model": 1383,
+         "control": 839,
+         "random_mean": 734.7,
+         "K": 1585
+        },
+        "50%": {
+         "model": 5568,
+         "control": 4123,
+         "random_mean": 3674.5,
+         "K": 7927
+        }
+       },
+       "verdict": "model (finds 2,575 vs 1,587 at K = 3,170 of 15,854; random 1469)",
+       "rules_note": "one-feature rules chosen after the fact, same K: LB position between trivial bound and UB ascending 2,658 (above the model), LB minus trivial bound ascending 2,507, gap descending 2,232",
+       "evidence": "runs/sched/model_v1/eval_cells12.json"
+      },
+      {
+       "run": "sched-netres-lb v1 prospective A/B: frozen snapshot predictions (committed 2085cc7) against the rows pass 3 wrote after the snapshot (7 Nov 16:02-16:39 local, until its pool broke)",
+       "cell": "NetRes pass 3 remainder (prospective)",
+       "objective": "maximize",
+       "model": {
+        "runs": 177,
+        "finds": 166,
+        "best": null,
+        "median": null,
+        "lb_units": 318
+       },
+       "control": {
+        "runs": 177,
+        "finds": 81,
+        "best": null,
+        "median": null,
+        "lb_units": 151
+       },
+       "random": {
+        "runs": 177,
+        "finds_mean": 66.8,
+        "finds_2_5_to_97_5": [
+         55.0,
+         78.0
+        ]
+       },
+       "test_rows": 885,
+       "base_rate": 0.3774,
+       "auc": 0.9026,
+       "at_10_and_50": {
+        "10%": {
+         "model": 86,
+         "control": 47,
+         "random_mean": 33.2,
+         "K": 88
+        },
+        "50%": {
+         "model": 294,
+         "control": 187,
+         "random_mean": 166.8,
+         "K": 442
+        }
+       },
+       "verdict": "model (finds 166 vs 81 at K = 177 of 885; random 67)",
+       "evidence": "runs/sched/model_v1/prospective_remainder.json (scored by score_when_done.sh at 16:42 when pass 3 ended)"
+      },
+      {
+       "run": "sched-netres-lb v1 online A/B on the Mac, 7 Nov 20:45-22:59 Dubai: its frozen 7 Nov 12:02 UTC predictions (runs/sched/model_v1/pred_snapshot_20261107T120228Z.tsv) order a 40 s re-run of pass-3c misses; the reference arm of lane sched-netres-rerun's cell 3, fixed before any of its runs",
+       "cell": "NetRes re-runs: pass-3c misses at 40 s (online, side by side)",
+       "objective": "maximize",
+       "model": {
+        "runs": 150,
+        "finds": 74,
+        "best": null,
+        "median": null,
+        "lb_units": 80,
+        "seconds": 6000.1
+       },
+       "control": {
+        "runs": 150,
+        "finds": 51,
+        "best": null,
+        "median": null,
+        "lb_units": 54,
+        "seconds": 6001.8
+       },
+       "verdict": "model (finds 74 vs 51: v1's top 150 of a seeded sample of 750 pass-3c misses against the plain order's first 150, each run at 40 s with LB_PARAMS in one pool, arms alternating; 28 instances in both arms, 20 finds each there)",
+       "code": "predictions runs/sched/model_v1/pred_snapshot_20261107T120228Z.tsv (sched_netres_rank.py predict on the 7 Nov 12:02 UTC snapshot); runs runs/sched/model_rerun/netres_jobs_phase1_ran.py sha256 a71b87ad9dcceeb80182517f6d1d57f9253c92767352ddd583a3d571e6adaabd",
+       "evidence": "runs/sched/model_rerun/cell3.json; rows runs/sched/model_rerun/phase1/RESULTS.tsv (tags cell3:ref_v1, cell3:control); sample and arms runs/sched/model_rerun/pred/pred_cell3.tsv, runs/sched/model_rerun/jobs_phase1.tsv"
+      },
+      {
+       "run": "sched-netres-lb v1 autoloop A/B on lb7 (frozen before any lb7 outcome; rows from NR_*/lb7/RESULTS.tsv) (NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1); control plain)",
+       "cell": "NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1)",
+       "objective": "maximize",
+       "model": {
+        "runs": 1076,
+        "finds": 1012,
+        "seconds": 96840.0,
+        "best": null,
+        "median": null,
+        "lb_units": 3935
+       },
+       "control": {
+        "runs": 1076,
+        "finds": 802,
+        "seconds": 96840.0,
+        "best": null,
+        "median": null,
+        "lb_units": 1184
+       },
+       "control_arm": "plain",
+       "rule": {
+        "kind": "top_k",
+        "frac": 0.2
+       },
+       "autoloop": {
+        "cycle": "c1",
+        "code": "42e7bce8addf31d8929cba27674924bc47dd25a93f967db4c88ebecc0a7e38b3",
+        "frozen": {
+         "v1": "6d3fb157ca21f5d8972c9ce4ce810a12fbaf2ca34cfe8380c1186f9e6ab6d809",
+         "v2": "88488fda934c2eff45e944b5afbbebe7717bcb0484339c41d23c1e8499ab1e7f",
+         "a1": "255baabef0d06284333a0f112a1817b594596eff405c4e359b6b399e20432c0e"
+        },
+        "scored_utc": "2026-11-09T17:57:21Z"
+       },
+       "test_rows": 5384,
+       "scored_rows": 5384,
+       "base_rate": 0.9016,
+       "auc": 0.5851606533417294,
+       "control_auc": null,
+       "random": {
+        "runs": 1076,
+        "finds_mean": 970.08
+       },
+       "at": {
+        "10%": {
+         "model": {
+          "runs": 538,
+          "finds": 507,
+          "seconds": 48420.0,
+          "best": null,
+          "median": null,
+          "lb_units": 1949
+         },
+         "control": {
+          "runs": 538,
+          "finds": 409,
+          "seconds": 48420.0,
+          "best": null,
+          "median": null,
+          "lb_units": 568
+         }
+        },
+        "50%": {
+         "model": {
+          "runs": 2692,
+          "finds": 2496,
+          "seconds": 242280.0,
+          "best": null,
+          "median": null,
+          "lb_units": 9374
+         },
+         "control": {
+          "runs": 2692,
+          "finds": 2187,
+          "seconds": 242280.0,
+          "best": null,
+          "median": null,
+          "lb_units": 4683
+         }
+        }
+       },
+       "code": "engine/models/sched_netres_rank.py sha256 a9eeaa36695420d292094661a4ab8b4747683a4089fb0fb6332a32a9a5f7e388"
+      }
+     ],
+     "pending": [
+      "NetRes pass 3b at 40 s (prospective): the same frozen predictions over the 10,378 pass-3 misses; score from NR_*/lb3b/RESULTS.tsv when runs/sched/pass3b.py ends",
+      "NetRes pass 3c (prospective): the same frozen predictions over the instances pass 3 never ran; score from NR_*/lb3c/RESULTS.tsv when pass3b.py --missing ends (runs/sched/model_v1/score_lb3c.py)"
+     ]
+    },
+    {
+     "version": "v2",
+     "status": "champion",
+     "code": "engine/models/sched_netres_rank_v2.py",
+     "sha256": "3c5f1401d29c80e870a4396ca73f10814889149f3549b6102663033c49343f57",
+     "model": "v1's 33 features plus the run's time budget, HistGradientBoosting with v1's settings, fit on every lower-bound pass on file (lb passes 1 and 3, lb3b, lb3c, lb4, lb5; 15-90 s runs); predictions for the 7,200 lb6 tasks frozen before any lb6 outcome",
+     "ab": [
+      {
+       "run": "sched-netres-lb v2 prospective A/B on lb6 (plain arm)",
+       "cell": "NetRes lb6 (prospective, v2 vs plain)",
+       "model": {
+        "runs": 1440,
+        "finds": 1440
+       },
+       "control": {
+        "runs": 1440,
+        "finds": 1326
+       },
+       "detail": {
+        "stat": {
+         "v2": {
+          "runs": 1440,
+          "finds": 1440,
+          "gain": 11354
+         },
+         "v1": {
+          "runs": 1440,
+          "finds": 1440,
+          "gain": 10875
+         },
+         "plain": {
+          "runs": 1440,
+          "finds": 1326,
+          "gain": 5267
+         }
+        },
+        "objective": "maximize",
+        "n": 7200,
+        "K": 1440,
+        "auc_v1": 0.7966456340026861,
+        "auc_v2": 0.8862709678042164,
+        "base_rate": 0.98375,
+        "pred": "runs/sched/model_v2/pred_lb6_20261108T172526Z.tsv"
+       },
+       "objective": "maximize",
+       "code": "engine/models/sched_netres_rank_v2.py sha256 3c5f1401d29c80e870a4396ca73f10814889149f3549b6102663033c49343f57"
+      },
+      {
+       "run": "sched-netres-lb v2 prospective A/B on lb6 (v1 arm)",
+       "cell": "NetRes lb6 (prospective, v2 vs v1 champion)",
+       "model": {
+        "runs": 1440,
+        "finds": 1440
+       },
+       "control": {
+        "runs": 1440,
+        "finds": 1440
+       },
+       "detail": {
+        "stat": {
+         "v2": {
+          "runs": 1440,
+          "finds": 1440,
+          "gain": 11354
+         },
+         "v1": {
+          "runs": 1440,
+          "finds": 1440,
+          "gain": 10875
+         },
+         "plain": {
+          "runs": 1440,
+          "finds": 1326,
+          "gain": 5267
+         }
+        },
+        "objective": "maximize",
+        "n": 7200,
+        "K": 1440,
+        "auc_v1": 0.7966456340026861,
+        "auc_v2": 0.8862709678042164,
+        "base_rate": 0.98375,
+        "pred": "runs/sched/model_v2/pred_lb6_20261108T172526Z.tsv"
+       },
+       "objective": "maximize",
+       "code": "engine/models/sched_netres_rank_v2.py sha256 3c5f1401d29c80e870a4396ca73f10814889149f3549b6102663033c49343f57"
+      },
+      {
+       "run": "sched-netres-lb v2 autoloop A/B on lb7 (frozen before any lb7 outcome; rows from NR_*/lb7/RESULTS.tsv) (NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1); control v1)",
+       "cell": "NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1)",
+       "objective": "maximize",
+       "model": {
+        "runs": 1076,
+        "finds": 1065,
+        "seconds": 96840.0,
+        "best": null,
+        "median": null,
+        "lb_units": 5515
+       },
+       "control": {
+        "runs": 1076,
+        "finds": 1012,
+        "seconds": 96840.0,
+        "best": null,
+        "median": null,
+        "lb_units": 3935
+       },
+       "control_arm": "v1",
+       "rule": {
+        "kind": "top_k",
+        "frac": 0.2
+       },
+       "autoloop": {
+        "cycle": "c1",
+        "code": "42e7bce8addf31d8929cba27674924bc47dd25a93f967db4c88ebecc0a7e38b3",
+        "frozen": {
+         "v1": "6d3fb157ca21f5d8972c9ce4ce810a12fbaf2ca34cfe8380c1186f9e6ab6d809",
+         "v2": "88488fda934c2eff45e944b5afbbebe7717bcb0484339c41d23c1e8499ab1e7f",
+         "a1": "255baabef0d06284333a0f112a1817b594596eff405c4e359b6b399e20432c0e"
+        },
+        "scored_utc": "2026-11-09T17:57:21Z"
+       },
+       "test_rows": 5384,
+       "scored_rows": 5384,
+       "base_rate": 0.9016,
+       "auc": 0.7417387721466832,
+       "control_auc": 0.5851606533417294,
+       "random": {
+        "runs": 1076,
+        "finds_mean": 970.08
+       },
+       "at": {
+        "10%": {
+         "model": {
+          "runs": 538,
+          "finds": 535,
+          "seconds": 48420.0,
+          "best": null,
+          "median": null,
+          "lb_units": 2971
+         },
+         "control": {
+          "runs": 538,
+          "finds": 507,
+          "seconds": 48420.0,
+          "best": null,
+          "median": null,
+          "lb_units": 1949
+         }
+        },
+        "50%": {
+         "model": {
+          "runs": 2692,
+          "finds": 2605,
+          "seconds": 242280.0,
+          "best": null,
+          "median": null,
+          "lb_units": 11486
+         },
+         "control": {
+          "runs": 2692,
+          "finds": 2496,
+          "seconds": 242280.0,
+          "best": null,
+          "median": null,
+          "lb_units": 9374
+         }
+        }
+       },
+       "code": "engine/models/sched_netres_rank_v2.py sha256 3c5f1401d29c80e870a4396ca73f10814889149f3549b6102663033c49343f57"
+      }
+     ],
+     "pending": [
+      "lb6 prospective cells: predictions FROZEN 8 Nov 2026 17:25:26 UTC in runs/sched/model_v2/pred_lb6_20261108T172526Z.tsv (sha256 16bb8fb12d4698981368d58d0502fd8a60415f4a13316946fb6b1baccee369ee; 7,200 rows; fit on 63,749 rows of lb, lb3b, lb3c, lb4, lb5); score with: python3 -I engine/models/sched_netres_rank_v2.py score runs/sched/model_v2/pred_lb6_20261108T172526Z.tsv runs/sched/model_v2/ab_lb6 once fetch_lb6.sh has merged NR_*/lb6, then record both json files"
+     ]
+    },
+    {
+     "version": "a1",
+     "status": "challenger",
+     "code": "engine/models/autoloop/sched-netres-lb-a1.json",
+     "sha256": "2c08ad1663bb742d111fc8df1fcd1480036a3f60a27b6c1c1020ad2aa9724667",
+     "model": "autoloop c1 challenger: hgb on feature set v1b (engine/models/autoloop/sched-netres-lb-a1.json); chosen on lb6 (fit on the passes before it) over 13 candidates; inner [1440, 3598, 0.86595] against references {\"v1 (order_lb6, the champion's frozen lb6 ranking)\": [1440, 3596, 0.79665], 'v2 (pred_lb6, its frozen lb6 predictions)': [1440, 3596, 0.79665]}",
+     "ab": [
+      {
+       "run": "sched-netres-lb a1 autoloop A/B on lb7 (frozen before any lb7 outcome; rows from NR_*/lb7/RESULTS.tsv) (NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1); control v1)",
+       "cell": "NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1)",
+       "objective": "maximize",
+       "model": {
+        "runs": 1076,
+        "finds": 1067,
+        "seconds": 96840.0,
+        "best": null,
+        "median": null,
+        "lb_units": 5399
+       },
+       "control": {
+        "runs": 1076,
+        "finds": 1012,
+        "seconds": 96840.0,
+        "best": null,
+        "median": null,
+        "lb_units": 3935
+       },
+       "control_arm": "v1",
+       "rule": {
+        "kind": "top_k",
+        "frac": 0.2
+       },
+       "autoloop": {
+        "cycle": "c1",
+        "code": "42e7bce8addf31d8929cba27674924bc47dd25a93f967db4c88ebecc0a7e38b3",
+        "frozen": {
+         "v1": "6d3fb157ca21f5d8972c9ce4ce810a12fbaf2ca34cfe8380c1186f9e6ab6d809",
+         "v2": "88488fda934c2eff45e944b5afbbebe7717bcb0484339c41d23c1e8499ab1e7f",
+         "a1": "255baabef0d06284333a0f112a1817b594596eff405c4e359b6b399e20432c0e"
+        },
+        "scored_utc": "2026-11-09T17:57:21Z"
+       },
+       "test_rows": 5384,
+       "scored_rows": 5384,
+       "base_rate": 0.9016,
+       "auc": 0.8292161298598316,
+       "control_auc": 0.5851606533417294,
+       "random": {
+        "runs": 1076,
+        "finds_mean": 970.08
+       },
+       "at": {
+        "10%": {
+         "model": {
+          "runs": 538,
+          "finds": 535,
+          "seconds": 48420.0,
+          "best": null,
+          "median": null,
+          "lb_units": 2873
+         },
+         "control": {
+          "runs": 538,
+          "finds": 507,
+          "seconds": 48420.0,
+          "best": null,
+          "median": null,
+          "lb_units": 1949
+         }
+        },
+        "50%": {
+         "model": {
+          "runs": 2692,
+          "finds": 2637,
+          "seconds": 242280.0,
+          "best": null,
+          "median": null,
+          "lb_units": 11373
+         },
+         "control": {
+          "runs": 2692,
+          "finds": 2496,
+          "seconds": 242280.0,
+          "best": null,
+          "median": null,
+          "lb_units": 9374
+         }
+        }
+       },
+       "code": "engine/models/autoloop/sched-netres-lb-a1.json sha256 2c08ad1663bb742d111fc8df1fcd1480036a3f60a27b6c1c1020ad2aa9724667"
+      }
+     ],
+     "pending": []
+    }
+   ],
+   "drives": "runs/kaggle_netres/build.py --order FILE puts the champion's ranking first (without --order the output is unchanged: checked byte-identical against the previous build.py on 7 Nov). runs/kaggle_netres/order_v1_20261107.tsv = v1 fit on every lb row up to 7 Nov 16:3x, ranking all 57,960 tasks of a default build (top 20%: mean predicted yield 0.97 against 0.54 overall; 8,670 of those 11,592 never run before). Next pass: .venv/bin/python -I runs/kaggle_netres/build.py --seconds 90 --order runs/kaggle_netres/order_v1_20261107.tsv --out DIR; re-rank first (engine/models/sched_netres_rank.py order runs/sched TASKS.jsonl ORDER.tsv) once the bounds have moved. Validated on first passes over open instances (caps from the listed LB); push-further queues such as lb4 (improved-only, 90 s) are not yet covered: the pass-3b prospective cell is the first test on re-runs.",
+   "held_out_registered": [
+    {
+     "cell": "NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1)",
+     "split": {
+      "lane": "sched-netres-lb",
+      "cycle": "c1",
+      "kind": "prospective",
+      "cell": "NetRes lb7 (prospective; autoloop c1: v1 vs plain, v2 and the generated challenger vs v1)",
+      "unit": "one lb7 task: a 90 s destructive CP-SAT lower-bound run on a Kaggle CPU (runs/kaggle_netres/dataset_lb7/tasks.jsonl, 5,400 open instances chosen by v1's ranking runs/kaggle_netres/order_lb7_20261109.tsv); a find = a proven bound above the task's LB (record LB or CLOSED; sched_netres_rank.label, the CP-SAT proof)",
+      "data": "NR_*/lb7/RESULTS.tsv once the three lb7 kernels are fetched and merged, else runs/kaggle_netres/out/qv-netres-lb7-c{0,1,2}/RESULTS.tsv when all three exist",
+      "keys_sha256": "a830bbb037cd3295d115d0c38bb4891d479dc105cf26d3c46be196a1227021c3",
+      "n": 5400,
+      "rule": {
+       "kind": "top_k",
+       "frac": 0.2
+      },
+      "comparisons": [
+       {
+        "version": "v1",
+        "control": "plain"
+       },
+       {
+        "version": "v2",
+        "control": "v1"
+       },
+       {
+        "version": "@gen",
+        "control": "v1"
+       }
+      ],
+      "score_when": "every lb7 task has a row (all three kernels merged), or at least 95% of them and no new row for 2 hours; K = 20% of the scored tasks; plain order = sets in netres.SETS order, ids ascending",
+      "frozen_scores": {
+       "v1": "the p column of runs/kaggle_netres/order_lb7_20261109.tsv (the ranking that chose lb7)",
+       "v2": "engine/models/sched_netres_rank_v2.py fit on its passes (lb, lb3b, lb3c, lb4, lb5)",
+       "@gen": "the loop's challenger for this round, if one beats v1's and v2's frozen lb6 rankings on lb6 when fit on the passes before lb6 (models.select); none otherwise"
+      },
+      "scorer": "lane_netres.score_lb7"
+     },
+     "registered_utc": "2026-11-09T04:28:46Z",
+     "by": "engine/train/autoloop/core.py register_cell",
+     "seen_before": "no lb7 outcome: NR_*/lb7 and runs/kaggle_netres/out/qv-netres-lb7-* did not exist on this machine; the lb7 task list and v1's order file only",
+     "note": "autoloop: the champion's standing A/B and the challengers' head-to-heads on lb7"
+    }
+   ]
+  },
+  "sched-netres-rerun": {
+   "plain_method": "re-run every miss of a short NetRes lower-bound pass (pass 3 and pass 3c: 15 s per instance) at 40 s in pass 3b's order (runs/sched/pass3b.py: sets as pass 3's log first printed them, NR_RU, NR_VAR, NR_RC, NR_TF, NR_AD; ids ascending), LB_PARAMS, destructive caps from the dataset file's LB",
+   "held_out": [
+    "NetRes re-runs: NR_VAR held out",
+    "NetRes re-runs: pass 3b after the snapshot (prospective)",
+    "NetRes re-runs: pass-3c misses at 40 s (online, side by side)",
+    "NetRes re-runs: pass 3b lines after v1's cell 2 (NR_TF from its 282nd line, NR_AD; time split)",
+    "NetRes re-runs: lb5 90 s Kaggle re-runs of the 947 pass-3 misses pass 3b never ran (instance set held out)",
+    "NetRes re-runs: second chances at 40 s, x1 vs v2 head-to-head (online; autoloop c1)"
+   ],
+   "held_out_note": "Fixed 7 Nov 2026 20:4x Dubai (16:4x UTC), before any re-run model was fit and before any pass 3b outcome was tallied (only the last 5 lines of its log had been seen). Snapshot runs/sched/model_rerun/snapshot_20261107T163620Z: copies of NR_*/lb3b/RESULTS.tsv, NR_AD/lb3c/RESULTS.tsv and the pass 3, 3b and 3c logs, taken 16:36:20 UTC (2,400 pass 3b rows: NR_RU 939, NR_VAR 1,121, NR_RC 340). Unit: one miss of a 15 s pass, re-run at 40 s; a find = the re-run proves a bound above its starting LB (record LB or CLOSED). Features, all known before the re-run: lane sched-netres-lb's 33 pre-run features at the re-run's LB and UB (sched_netres_rank.features) plus the short run's outcome (its LB minus its proven bound, that over the LB, and its bound minus the trivial bound max(critical path, energy bound)); no set identity, nothing from the re-run. Model v1 fixed in advance: HistGradientBoostingClassifier with sched_netres_rank's settings (learning_rate 0.05, max_iter 400, max_leaf_nodes 31, min_samples_leaf 40, l2_regularization 1.0, early stopping on 15%, random_state 0). Cells: (1) NR_VAR held out: fit on the snapshot rows of NR_RU and NR_RC, test on NR_VAR's 1,121 rows; (2) prospective: fit on all 2,400 snapshot rows, frozen predictions for every pass 3b candidate not in the snapshot; test = the first 2,000 instance lines pass 3b prints after the snapshot (runs/sched/netres_lb_pass3b.log), scored when they exist; (3) online, side by side: a seeded sample (random.Random(20261107).sample, 750) of the pass-3c misses still open on the dataset file (never re-run by any pass; none in Kaggle lb5), frozen predictions of the cell-2 model; model arm = its top 150, control arm = the first 150 in the plain order (ids ascending); both arms run by engine/models/sched_netres_rerun.py online at 40 s, LB_PARAMS, destructive caps from the dataset file's LB, alternating in one pool of 4 nice-10 workers on the Mac (an instance in both arms runs once per arm). Cells 1-2: K = 20% of the cell's instances; model = top K by predicted probability, control = first K in the plain order; both judged by pass 3b's own 40 s runs (every test instance was run, so each arm's yield is what running only its K would have given). Verdict: finds (registry rule). Also reported: random K (mean, 2.5-97.5% of 2,000 seeded draws), K = 10% and 50%, LB units, and for reference lane sched-netres-lb v1's frozen first-pass ranking (runs/sched/model_v1/pred_snapshot_20261107T120228Z.tsv) on the same instances: this lane's model must add something over v1 to be worth driving re-runs.",
+   "drives_plan": "the next re-run queues: Kaggle NetRes lb5 order (runs/kaggle_netres/build.py --order) and a 40 s re-run of the pass-3c misses, model order first",
+   "champion": "v2",
+   "versions": [
+    {
+     "version": "v1",
+     "status": "challenger",
+     "code": "engine/models/sched_netres_rerun.py",
+     "sha256": "9c5b058de99b6345ec5bfbeb4efadc88dceae6c95d63fc8cbbfb0ea1a207c889",
+     "model": "HistGradientBoostingClassifier on lane sched-netres-lb's 33 pre-run features plus the 15 s short run's outcome (LB minus its bound, that over the LB, its bound minus the trivial bound); ranks the misses of a short pass for a 40 s re-run by P(a proven bound above the LB)",
+     "ab": [
+      {
+       "run": "sched-netres-rerun v1 offline A/B on the 7 Nov 16:36 UTC snapshot (NetRes re-runs: NR_VAR held out)",
+       "cell": "NetRes re-runs: NR_VAR held out",
+       "objective": "maximize",
+       "model": {
+        "runs": 224,
+        "finds": 46,
+        "best": null,
+        "median": null,
+        "lb_units": 50
+       },
+       "control": {
+        "runs": 224,
+        "finds": 39,
+        "best": null,
+        "median": null,
+        "lb_units": 40
+       },
+       "random": {
+        "runs": 224,
+        "finds_mean": 12.4,
+        "finds_2_5_to_97_5": [
+         7.0,
+         18.0
+        ]
+       },
+       "reference_sched_netres_lb_v1": {
+        "runs": 224,
+        "finds": 53,
+        "lb_units": 57,
+        "auc": 0.9266
+       },
+       "test_rows": 1121,
+       "train_rows": 1279,
+       "base_rate": 0.0553,
+       "auc": 0.8666,
+       "at_10_and_50": {
+        "10%": {
+         "K": 112,
+         "model": 30,
+         "control": 21,
+         "random_mean": 6.2,
+         "reference_v1": 40
+        },
+        "50%": {
+         "K": 560,
+         "model": 60,
+         "control": 60,
+         "random_mean": 31.0,
+         "reference_v1": 62
+        }
+       },
+       "verdict": "model (finds 46 vs 39 at K = 224 of 1,121; random 12.4); but lane sched-netres-lb v1's frozen first-pass ranking does better on the same rows (53 finds; AUC 0.927 against 0.867): trained on 1,279 re-run rows, this model has not learned what v1 learned from 37,000 first-pass rows",
+       "evidence": "runs/sched/model_rerun/cell1_nrvar_heldout.json",
+       "code": "engine/models/sched_netres_rerun.py sha256 9c5b058de99b6345ec5bfbeb4efadc88dceae6c95d63fc8cbbfb0ea1a207c889"
+      },
+      {
+       "run": "sched-netres-rerun v1 online A/B on the Mac, 7 Nov 20:45-23:0x Dubai (NetRes re-runs: pass-3c misses at 40 s)",
+       "cell": "NetRes re-runs: pass-3c misses at 40 s (online, side by side)",
+       "objective": "maximize",
+       "model": {
+        "runs": 150,
+        "finds": 44,
+        "best": null,
+        "median": null,
+        "lb_units": 45,
+        "seconds": 6000.3
+       },
+       "control": {
+        "runs": 150,
+        "finds": 51,
+        "best": null,
+        "median": null,
+        "lb_units": 54,
+        "seconds": 6001.8
+       },
+       "reference_sched_netres_lb_v1": {
+        "runs": 150,
+        "finds": 74,
+        "lb_units": 80,
+        "seconds": 6000.1
+       },
+       "shared": {
+        "cell3:control & cell3:model": {
+         "instances": 34,
+         "finds": {
+          "cell3:control": 14,
+          "cell3:model": 14
+         }
+        },
+        "cell3:control & cell3:ref_v1": {
+         "instances": 28,
+         "finds": {
+          "cell3:control": 20,
+          "cell3:ref_v1": 20
+         }
+        },
+        "cell3:model & cell3:ref_v1": {
+         "instances": 48,
+         "finds": {
+          "cell3:model": 21,
+          "cell3:ref_v1": 24
+         }
+        }
+       },
+       "runner": "runs/sched/model_rerun/netres_jobs_phase1_ran.py sha256 a71b87ad9dcceeb80182517f6d1d57f9253c92767352ddd583a3d571e6adaabd (engine/models/netres_jobs.py as it ran; the scorer was added later)",
+       "evidence": "runs/sched/model_rerun/cell3.json; rows runs/sched/model_rerun/phase1/RESULTS.tsv (tags cell3:*)",
+       "verdict": "control (finds 44 vs 51 for the plain order's first 150; same 40 s runs side by side); the reference arm, lane sched-netres-lb v1's frozen top 150 of the same 750, found 74: v1's first-pass ranking orders these re-runs far better than this model, which was fit on 2,400 pass 3b rows of NR_RU, NR_VAR and NR_RC and does not carry over to NR_AD's pass-3c misses",
+       "code": "engine/models/sched_netres_rerun.py sha256 9c5b058de99b6345ec5bfbeb4efadc88dceae6c95d63fc8cbbfb0ea1a207c889"
+      },
+      {
+       "run": "sched-netres-rerun v1 prospective A/B: frozen predictions (pred_cell2.tsv, committed c1d891c) against the first 2,000 instance lines pass 3b printed after the 16:36 UTC snapshot (NR_RC 1,719, NR_TF 281; scored 7 Nov 23:5x Dubai)",
+       "cell": "NetRes re-runs: pass 3b after the snapshot (prospective)",
+       "objective": "maximize",
+       "model": {
+        "runs": 400,
+        "finds": 150,
+        "best": null,
+        "median": null,
+        "lb_units": 164
+       },
+       "control": {
+        "runs": 400,
+        "finds": 65,
+        "best": null,
+        "median": null,
+        "lb_units": 69
+       },
+       "random": {
+        "runs": 400,
+        "finds_mean": 61.4,
+        "finds_2_5_to_97_5": [
+         49.0,
+         74.0
+        ]
+       },
+       "reference_sched_netres_lb_v1": {
+        "runs": 400,
+        "finds": 156,
+        "lb_units": 167,
+        "auc": 0.8156
+       },
+       "test_rows": 2000,
+       "base_rate": 0.1535,
+       "auc": 0.8061,
+       "at_10_and_50": {
+        "10%": {
+         "K": 200,
+         "model": 84,
+         "control": 24,
+         "random_mean": 30.7,
+         "reference_v1": 94
+        },
+        "50%": {
+         "K": 1000,
+         "model": 274,
+         "control": 200,
+         "random_mean": 153.5,
+         "reference_v1": 276
+        }
+       },
+       "verdict": "model (finds 150 vs 65 at K = 400 of 2,000; random 61.4); lane sched-netres-lb v1's frozen ranking found 156 (AUC 0.816 against 0.806)",
+       "evidence": "runs/sched/model_rerun/cell2_prospective.json (runs/sched/netres_lb_pass3b.log lines 2,401-4,400 of its instance lines)",
+       "code": "engine/models/sched_netres_rerun.py sha256 9c5b058de99b6345ec5bfbeb4efadc88dceae6c95d63fc8cbbfb0ea1a207c889"
+      }
+     ],
+     "pending": []
+    },
+    {
+     "version": "v2",
+     "status": "former champion",
+     "code": "engine/models/sched_netres_rerun_v2.py",
+     "sha256": "3e8e1008f55d25ec77e02068683cfc29d05e6c8701538c19deb2132ce2f44ceb",
+     "model": "HistGradientBoostingClassifier (sched_netres_rank.PARAMS) on v1's 36 pre-run features plus 8 from the unified NetRes log of the first passes: the instance's pass-1 run (ran, find, (LB - bound)/LB), the pass-1/pass-3 find rate of its network file and of its resource profile (smoothed, own runs left out) with log run counts, and lane sched-netres-lb v1's frozen first-pass probability; fit on pass 3b's first 4,400 instance lines; ranks re-runs of short-pass misses by P(a proven bound above the LB)",
+     "ab": [
+      {
+       "run": "sched-netres-rerun v2 offline A/B on cell A: frozen predictions (runs/sched/model_rerun_v2/pred_A.tsv, sha256 eeb0ffbca2fc579c..., fit 2026-11-09T03:51:59Z on pass 3b's first 4400 lines) against pass 3b's own runs of every instance of the cell",
+       "cell": "NetRes re-runs: pass 3b lines after v1's cell 2 (NR_TF from its 282nd line, NR_AD; time split)",
+       "objective": "maximize",
+       "model": {
+        "runs": 1116,
+        "finds": 701,
+        "lb_units": 832,
+        "best": null,
+        "median": null
+       },
+       "control": {
+        "runs": 1116,
+        "finds": 423,
+        "lb_units": 476,
+        "best": null,
+        "median": null
+       },
+       "random": {
+        "runs": 1116,
+        "finds_mean": 391.3,
+        "finds_2_5_to_97_5": [
+         362.0,
+         419.0
+        ]
+       },
+       "test_rows": 5582,
+       "base_rate": 0.3506,
+       "auc": 0.7336,
+       "references_at_20": {
+        "reference_v1_features_refit": {
+         "runs": 1116,
+         "finds": 663,
+         "lb_units": 773
+        },
+        "reference_sched_netres_lb_v1": {
+         "runs": 1116,
+         "finds": 698,
+         "lb_units": 818
+        },
+        "reference_v1_frozen_cell2": {
+         "runs": 1116,
+         "finds": 659,
+         "lb_units": 775
+        }
+       },
+       "reference_auc": {
+        "reference_v1_features_refit": 0.7264,
+        "reference_sched_netres_lb_v1": 0.7427,
+        "reference_v1_frozen_cell2": 0.72
+       },
+       "at_10_and_50": {
+        "10%": {
+         "K": 558,
+         "model": {
+          "runs": 558,
+          "finds": 367,
+          "lb_units": 447
+         },
+         "control": {
+          "runs": 558,
+          "finds": 178,
+          "lb_units": 196
+         },
+         "random": {
+          "runs": 558,
+          "finds_mean": 195.6,
+          "finds_2_5_to_97_5": [
+           173.0,
+           216.02499999999986
+          ]
+         },
+         "reference_v1_features_refit": {
+          "runs": 558,
+          "finds": 358,
+          "lb_units": 423
+         },
+         "reference_sched_netres_lb_v1": {
+          "runs": 558,
+          "finds": 369,
+          "lb_units": 441
+         },
+         "reference_v1_frozen_cell2": {
+          "runs": 558,
+          "finds": 333,
+          "lb_units": 400
+         }
+        },
+        "50%": {
+         "K": 2791,
+         "model": {
+          "runs": 2791,
+          "finds": 1434,
+          "lb_units": 1630
+         },
+         "control": {
+          "runs": 2791,
+          "finds": 1118,
+          "lb_units": 1282
+         },
+         "random": {
+          "runs": 2791,
+          "finds_mean": 978.5,
+          "finds_2_5_to_97_5": [
+           943.975,
+           1014.0
+          ]
+         },
+         "reference_v1_features_refit": {
+          "runs": 2791,
+          "finds": 1411,
+          "lb_units": 1602
+         },
+         "reference_sched_netres_lb_v1": {
+          "runs": 2791,
+          "finds": 1435,
+          "lb_units": 1636
+         },
+         "reference_v1_frozen_cell2": {
+          "runs": 2791,
+          "finds": 1401,
+          "lb_units": 1590
+         }
+        }
+       },
+       "evidence": "runs/sched/model_rerun_v2/ab_A.json",
+       "code": "engine/models/sched_netres_rerun_v2.py sha256 3e8e1008f55d25ec77e02068683cfc29d05e6c8701538c19deb2132ce2f44ceb"
+      },
+      {
+       "run": "sched-netres-rerun v2 offline A/B on cell B: frozen predictions (runs/sched/model_rerun_v2/pred_B.tsv, sha256 f47d7d382094810b..., fit 2026-11-09T03:51:59Z on pass 3b's first 4400 lines) against Kaggle lb5's own runs of every instance of the cell",
+       "cell": "NetRes re-runs: lb5 90 s Kaggle re-runs of the 947 pass-3 misses pass 3b never ran (instance set held out)",
+       "objective": "maximize",
+       "model": {
+        "runs": 189,
+        "finds": 129,
+        "lb_units": 184,
+        "best": null,
+        "median": null
+       },
+       "control": {
+        "runs": 189,
+        "finds": 49,
+        "lb_units": 59,
+        "best": null,
+        "median": null
+       },
+       "random": {
+        "runs": 189,
+        "finds_mean": 67.3,
+        "finds_2_5_to_97_5": [
+         56.0,
+         79.0
+        ]
+       },
+       "test_rows": 947,
+       "base_rate": 0.3559,
+       "auc": 0.7451,
+       "references_at_20": {
+        "reference_v1_features_refit": {
+         "runs": 189,
+         "finds": 117,
+         "lb_units": 167
+        },
+        "reference_sched_netres_lb_v1": {
+         "runs": 189,
+         "finds": 133,
+         "lb_units": 192
+        }
+       },
+       "reference_auc": {
+        "reference_v1_features_refit": 0.6906,
+        "reference_sched_netres_lb_v1": 0.7854
+       },
+       "at_10_and_50": {
+        "10%": {
+         "K": 94,
+         "model": {
+          "runs": 94,
+          "finds": 68,
+          "lb_units": 97
+         },
+         "control": {
+          "runs": 94,
+          "finds": 23,
+          "lb_units": 30
+         },
+         "random": {
+          "runs": 94,
+          "finds_mean": 33.5,
+          "finds_2_5_to_97_5": [
+           25.0,
+           42.0
+          ]
+         },
+         "reference_v1_features_refit": {
+          "runs": 94,
+          "finds": 67,
+          "lb_units": 102
+         },
+         "reference_sched_netres_lb_v1": {
+          "runs": 94,
+          "finds": 67,
+          "lb_units": 103
+         }
+        },
+        "50%": {
+         "K": 473,
+         "model": {
+          "runs": 473,
+          "finds": 243,
+          "lb_units": 337
+         },
+         "control": {
+          "runs": 473,
+          "finds": 138,
+          "lb_units": 171
+         },
+         "random": {
+          "runs": 473,
+          "finds_mean": 168.3,
+          "finds_2_5_to_97_5": [
+           153.975,
+           183.0
+          ]
+         },
+         "reference_v1_features_refit": {
+          "runs": 473,
+          "finds": 226,
+          "lb_units": 312
+         },
+         "reference_sched_netres_lb_v1": {
+          "runs": 473,
+          "finds": 259,
+          "lb_units": 355
+         }
+        }
+       },
+       "evidence": "runs/sched/model_rerun_v2/ab_B.json",
+       "code": "engine/models/sched_netres_rerun_v2.py sha256 3e8e1008f55d25ec77e02068683cfc29d05e6c8701538c19deb2132ce2f44ceb"
+      }
+     ],
+     "pending": []
+    },
+    {
+     "version": "x1",
+     "status": "demoted",
+     "code": "engine/models/crosslane_v1.py",
+     "sha256": "3323327aa5421088c28ea832fd21a8555fa10af8c927bf6511ee91d9239857b8",
+     "model": "Cross-lane model v1 (leave-one-lane-out): HistGradientBoostingClassifier on 7 shared features (log budget, log earlier attempts on the cell, earlier find on the cell, smoothed family find rate and log family size from earlier attempts, size and gap-to-target percentiles inside the lane) plus a one-hot lane embedding over five training lanes (covering-factory, covering-designs-native, codes-qt-search, spherical-codes-table-starts, sched-netres-lb pass 1 and 3; 71,335 rows); never trained on a re-run; this lane's rows get an all-zero embedding; fit 9 Nov 03:55 UTC, predictions frozen before any cell-A or cell-B outcome was read",
+     "ab": [
+      {
+       "run": "sched-netres-rerun x1 (cross-lane, leave-one-lane-out) offline A/B on cell A: frozen predictions (runs/sched/model_rerun_x1/pred_A.tsv, sha256 4e32a9d4c1ba5e67..., fit 2026-11-09T03:55:11Z on 71335 rows of five other lanes, none of this lane) against pass 3b's own runs of every instance of the cell",
+       "cell": "NetRes re-runs: pass 3b lines after v1's cell 2 (NR_TF from its 282nd line, NR_AD; time split)",
+       "objective": "maximize",
+       "model": {
+        "runs": 1116,
+        "finds": 665,
+        "lb_units": 809,
+        "best": null,
+        "median": null
+       },
+       "control": {
+        "runs": 1116,
+        "finds": 423,
+        "lb_units": 476,
+        "best": null,
+        "median": null
+       },
+       "random": {
+        "runs": 1116,
+        "finds_mean": 391.3,
+        "finds_2_5_to_97_5": [
+         362.0,
+         419.0
+        ]
+       },
+       "test_rows": 5582,
+       "base_rate": 0.3506,
+       "auc": 0.7092,
+       "references_at_20": {
+        "reference_v2": {
+         "runs": 1116,
+         "finds": 701,
+         "lb_units": 832
+        },
+        "reference_sched_netres_lb_v1": {
+         "runs": 1116,
+         "finds": 698,
+         "lb_units": 818
+        }
+       },
+       "reference_auc": {
+        "reference_v2": 0.7336,
+        "reference_sched_netres_lb_v1": 0.7427
+       },
+       "at_10_and_50": {
+        "10%": {
+         "K": 558,
+         "model": {
+          "runs": 558,
+          "finds": 356,
+          "lb_units": 442
+         },
+         "control": {
+          "runs": 558,
+          "finds": 178,
+          "lb_units": 196
+         },
+         "random": {
+          "runs": 558,
+          "finds_mean": 195.6,
+          "finds_2_5_to_97_5": [
+           173.0,
+           216.02499999999986
+          ]
+         },
+         "reference_v2": {
+          "runs": 558,
+          "finds": 367,
+          "lb_units": 447
+         },
+         "reference_sched_netres_lb_v1": {
+          "runs": 558,
+          "finds": 369,
+          "lb_units": 441
+         }
+        },
+        "50%": {
+         "K": 2791,
+         "model": {
+          "runs": 2791,
+          "finds": 1368,
+          "lb_units": 1576
+         },
+         "control": {
+          "runs": 2791,
+          "finds": 1118,
+          "lb_units": 1282
+         },
+         "random": {
+          "runs": 2791,
+          "finds_mean": 978.5,
+          "finds_2_5_to_97_5": [
+           943.975,
+           1014.0
+          ]
+         },
+         "reference_v2": {
+          "runs": 2791,
+          "finds": 1434,
+          "lb_units": 1630
+         },
+         "reference_sched_netres_lb_v1": {
+          "runs": 2791,
+          "finds": 1435,
+          "lb_units": 1636
+         }
+        }
+       },
+       "evidence": "runs/sched/model_rerun_x1/ab_A.json",
+       "code": "engine/models/crosslane_v1.py sha256 3323327aa5421088c28ea832fd21a8555fa10af8c927bf6511ee91d9239857b8"
+      },
+      {
+       "run": "sched-netres-rerun x1 (cross-lane, leave-one-lane-out) offline A/B on cell B: frozen predictions (runs/sched/model_rerun_x1/pred_B.tsv, sha256 63016020359127f9..., fit 2026-11-09T03:55:11Z on 71335 rows of five other lanes, none of this lane) against Kaggle lb5's own runs of every instance of the cell",
+       "cell": "NetRes re-runs: lb5 90 s Kaggle re-runs of the 947 pass-3 misses pass 3b never ran (instance set held out)",
+       "objective": "maximize",
+       "model": {
+        "runs": 189,
+        "finds": 126,
+        "lb_units": 178,
+        "best": null,
+        "median": null
+       },
+       "control": {
+        "runs": 189,
+        "finds": 49,
+        "lb_units": 59,
+        "best": null,
+        "median": null
+       },
+       "random": {
+        "runs": 189,
+        "finds_mean": 67.3,
+        "finds_2_5_to_97_5": [
+         56.0,
+         79.0
+        ]
+       },
+       "test_rows": 947,
+       "base_rate": 0.3559,
+       "auc": 0.7161,
+       "references_at_20": {
+        "reference_v2": {
+         "runs": 189,
+         "finds": 129,
+         "lb_units": 184
+        },
+        "reference_sched_netres_lb_v1": {
+         "runs": 189,
+         "finds": 133,
+         "lb_units": 192
+        }
+       },
+       "reference_auc": {
+        "reference_v2": 0.7451,
+        "reference_sched_netres_lb_v1": 0.7854
+       },
+       "at_10_and_50": {
+        "10%": {
+         "K": 94,
+         "model": {
+          "runs": 94,
+          "finds": 69,
+          "lb_units": 102
+         },
+         "control": {
+          "runs": 94,
+          "finds": 23,
+          "lb_units": 30
+         },
+         "random": {
+          "runs": 94,
+          "finds_mean": 33.5,
+          "finds_2_5_to_97_5": [
+           25.0,
+           42.0
+          ]
+         },
+         "reference_v2": {
+          "runs": 94,
+          "finds": 68,
+          "lb_units": 97
+         },
+         "reference_sched_netres_lb_v1": {
+          "runs": 94,
+          "finds": 67,
+          "lb_units": 103
+         }
+        },
+        "50%": {
+         "K": 473,
+         "model": {
+          "runs": 473,
+          "finds": 235,
+          "lb_units": 324
+         },
+         "control": {
+          "runs": 473,
+          "finds": 138,
+          "lb_units": 171
+         },
+         "random": {
+          "runs": 473,
+          "finds_mean": 168.3,
+          "finds_2_5_to_97_5": [
+           153.975,
+           183.0
+          ]
+         },
+         "reference_v2": {
+          "runs": 473,
+          "finds": 243,
+          "lb_units": 337
+         },
+         "reference_sched_netres_lb_v1": {
+          "runs": 473,
+          "finds": 259,
+          "lb_units": 355
+         }
+        }
+       },
+       "evidence": "runs/sched/model_rerun_x1/ab_B.json",
+       "code": "engine/models/crosslane_v1.py sha256 3323327aa5421088c28ea832fd21a8555fa10af8c927bf6511ee91d9239857b8"
+      },
+      {
+       "run": "sched-netres-rerun x1 autoloop online A/B (each arm's top 100 of the pool, 40 s per run; the arms' union run once and credited to every arm that holds it) (NetRes re-runs: second chances at 40 s, x1 vs v2 head-to-head (online; autoloop c1); control v2)",
+       "cell": "NetRes re-runs: second chances at 40 s, x1 vs v2 head-to-head (online; autoloop c1)",
+       "objective": "maximize",
+       "model": {
+        "runs": 100,
+        "finds": 46,
+        "seconds": 4000.0,
+        "best": null,
+        "median": null,
+        "lb_units": 52
+       },
+       "control": {
+        "runs": 100,
+        "finds": 63,
+        "seconds": 4000.0,
+        "best": null,
+        "median": null,
+        "lb_units": 74
+       },
+       "control_arm": "v2",
+       "rule": {
+        "kind": "top_k",
+        "frac": 0.2,
+        "online": true,
+        "report_fracs": [
+         0.1
+        ]
+       },
+       "autoloop": {
+        "cycle": "c1",
+        "code": "42e7bce8addf31d8929cba27674924bc47dd25a93f967db4c88ebecc0a7e38b3",
+        "frozen": {
+         "x1": "cd372b3d65c3604b3a86c60866d1de0c69c85293952465e6c28593e2de43df0c",
+         "v2": "7fed34f87d44e43d02b81e0fe50450ca5c489fa549bbb5fcb975f6a8751e3fa7"
+        },
+        "scored_utc": "2026-11-09T06:08:53Z"
+       },
+       "test_rows": 500,
+       "scored_rows": 227,
+       "base_rate": 0.3877,
+       "auc": 0.6453564421190321,
+       "control_auc": 0.8136036625245259,
+       "random": {
+        "runs": 100,
+        "finds_mean": 38.77
+       },
+       "at": {
+        "10%": {
+         "model": {
+          "runs": 50,
+          "finds": 26,
+          "seconds": 2000.0,
+          "best": null,
+          "median": null,
+          "lb_units": 32
+         },
+         "control": {
+          "runs": 50,
+          "finds": 38,
+          "seconds": 2000.0,
+          "best": null,
+          "median": null,
+          "lb_units": 46
+         }
+        }
+       },
+       "code": "engine/models/crosslane_v1.py sha256 3323327aa5421088c28ea832fd21a8555fa10af8c927bf6511ee91d9239857b8"
+      },
+      {
+       "run": "sched-netres-rerun x1 autoloop online A/B (each arm's top 100 of the pool, 40 s per run; the arms' union run once and credited to every arm that holds it) (NetRes re-runs: second chances at 40 s, x1 vs v2 head-to-head (online; autoloop c1); control plain)",
+       "cell": "NetRes re-runs: second chances at 40 s, x1 vs v2 head-to-head (online; autoloop c1)",
+       "objective": "maximize",
+       "model": {
+        "runs": 100,
+        "finds": 46,
+        "seconds": 4000.0,
+        "best": null,
+        "median": null,
+        "lb_units": 52
+       },
+       "control": {
+        "runs": 100,
+        "finds": 21,
+        "seconds": 4000.0,
+        "best": null,
+        "median": null,
+        "lb_units": 25
+       },
+       "control_arm": "plain",
+       "rule": {
+        "kind": "top_k",
+        "frac": 0.2,
+        "online": true,
+        "report_fracs": [
+         0.1
+        ]
+       },
+       "autoloop": {
+        "cycle": "c1",
+        "code": "42e7bce8addf31d8929cba27674924bc47dd25a93f967db4c88ebecc0a7e38b3",
+        "frozen": {
+         "x1": "cd372b3d65c3604b3a86c60866d1de0c69c85293952465e6c28593e2de43df0c",
+         "v2": "7fed34f87d44e43d02b81e0fe50450ca5c489fa549bbb5fcb975f6a8751e3fa7"
+        },
+        "scored_utc": "2026-11-09T06:08:53Z"
+       },
+       "test_rows": 500,
+       "scored_rows": 227,
+       "base_rate": 0.3877,
+       "auc": 0.6453564421190321,
+       "control_auc": null,
+       "random": {
+        "runs": 100,
+        "finds_mean": 38.77
+       },
+       "at": {
+        "10%": {
+         "model": {
+          "runs": 50,
+          "finds": 26,
+          "seconds": 2000.0,
+          "best": null,
+          "median": null,
+          "lb_units": 32
+         },
+         "control": {
+          "runs": 50,
+          "finds": 17,
+          "seconds": 2000.0,
+          "best": null,
+          "median": null,
+          "lb_units": 21
+         }
+        }
+       },
+       "code": "engine/models/crosslane_v1.py sha256 3323327aa5421088c28ea832fd21a8555fa10af8c927bf6511ee91d9239857b8"
+      }
+     ],
+     "pending": []
+    }
+   ],
+   "protocol_amendments": [
+    "7 Nov 20:4x Dubai, before any cell-3 run had finished: cell 3 runs through engine/models/netres_jobs.py (the same netres.solve call, settings A = LB_PARAMS, 40 s, destructive caps from the dataset file's LB; the version that ran is runs/sched/model_rerun/netres_jobs_phase1_ran.py, sha256 a71b87ad9dcceeb80182517f6d1d57f9253c92767352ddd583a3d571e6adaabd) instead of sched_netres_rerun.py online, in one pool of 4 nice workers with the arms alternating (job file runs/sched/model_rerun/jobs_phase1.tsv: per rank k, model k, control k, then a reference arm k = lane sched-netres-lb v1's frozen top 150 of the same 750, then setting-B runs of those instances for lane sched-netres-lb-params' training); the reference arm is reported, not part of the verdict"
+   ],
+   "status_note": "9 Nov 2026 07:5x Dubai (03:5x UTC): cells A and B were registered (03:51 UTC) before any fit; v2 and x1 were fit and their predictions frozen and committed (305aaf8) before any cell outcome was read. v2 won A (701 vs 423 finds at K = 1,116 of 5,582) and B (129 vs 49 at K = 189 of 947) and was promoted; x1, the cross-lane model that never trained on a re-run, won both too (665 vs 423; 126 vs 49) and, recorded after v2 in the order the runs were scored, is champion by the rule, with v2 as its rollback (former champion). References at the same K, not verdicts: v2 found more than x1 in both cells (701/665, 129/126); lane sched-netres-lb v1's frozen first-pass ranking found 698 and 133; v1's features refit on the same lines 663 and 117. A head-to-head cell (x1 against v2) would have to be declared before its run. Earlier note: 7 Nov 23:5x Dubai: v1 won cells 1 and 2 against the plain order (46 vs 39; 150 vs 65) and lost cell 3, the live side-by-side re-run (44 vs 51), so by the rule it stays a challenger and is never promoted. In every cell lane sched-netres-lb v1's frozen first-pass ranking found more (53, 156 and 74 finds), and on the 2,400 training rows the 15 s short run's outcome added nothing to v1's probability (leave-one-set-out logistic stacking: AUC 0.792/0.925/0.774 against v1 alone 0.787/0.927/0.790). Re-run queues (Kaggle lb5, the pass-3c misses) should be ordered by lane sched-netres-lb v1; no v2 of this lane is planned.",
+   "held_out_registered": [
+    {
+     "cell": "NetRes re-runs: pass 3b lines after v1's cell 2 (NR_TF from its 282nd line, NR_AD; time split)",
+     "split": {
+      "kind": "keys",
+      "lane": "sched-netres-rerun",
+      "cell": "NetRes re-runs: pass 3b lines after v1's cell 2 (NR_TF from its 282nd line, NR_AD; time split)",
+      "held_out_keys_sha256": "0b64eb028e3c8a799bf45bf30e8ad09a8d7b7cc0fdf9575ca7b67b31fd0aa0ae",
+      "train_keys_sha256": "a408c5875496a8c5cdfc49f1d09f7fd9ef2a68f2adf6e52e6a44542948d72d81",
+      "held_out_n": 5582,
+      "train_n": 4400
+     },
+     "registered_utc": "2026-11-09T03:51:42Z",
+     "by": "engine/models/sched_netres_rerun_v2.py register",
+     "seen_before": "instance keys and counts only: 4400 training lines, 5582 held-out instances; no model fit; no tally of any held-out outcome. Rows displayed while checking file formats: two cell-A instances, NR_AD 121970 (its lb3b row: LB, after this code was written) and NR_AD 126708 (its lb5 row only, before the cells were conceived); no cell-B outcome; cell B's first lb5 task line (NR_AD 259515: LB 58, UB 64) with no outcome.",
+     "note": "held out: 5582 pass 3b instance lines (40 s, Mac) after v1's cell 2; Model v2: NetRes re-run ranker (lane sched-netres-rerun in registry.json; cells A and B fixed there before any fit)."
+    },
+    {
+     "cell": "NetRes re-runs: lb5 90 s Kaggle re-runs of the 947 pass-3 misses pass 3b never ran (instance set held out)",
+     "split": {
+      "kind": "keys",
+      "lane": "sched-netres-rerun",
+      "cell": "NetRes re-runs: lb5 90 s Kaggle re-runs of the 947 pass-3 misses pass 3b never ran (instance set held out)",
+      "held_out_keys_sha256": "44cfd8fd6a8730f7075c7e6a2389101aa102bd591a71955eef93a415b49e3fdf",
+      "train_keys_sha256": "a408c5875496a8c5cdfc49f1d09f7fd9ef2a68f2adf6e52e6a44542948d72d81",
+      "held_out_n": 947,
+      "train_n": 4400
+     },
+     "registered_utc": "2026-11-09T03:51:42Z",
+     "by": "engine/models/sched_netres_rerun_v2.py register",
+     "seen_before": "instance keys and counts only: 4400 training lines, 947 held-out instances; no model fit; no tally of any held-out outcome. Rows displayed while checking file formats: two cell-A instances, NR_AD 121970 (its lb3b row: LB, after this code was written) and NR_AD 126708 (its lb5 row only, before the cells were conceived); no cell-B outcome; cell B's first lb5 task line (NR_AD 259515: LB 58, UB 64) with no outcome.",
+     "note": "held out: 947 lb5 re-runs (90 s, Kaggle CPU) of pass-3 misses pass 3b never ran; Model v2: NetRes re-run ranker (lane sched-netres-rerun in registry.json; cells A and B fixed there before any fit)."
+    },
+    {
+     "cell": "NetRes re-runs: second chances at 40 s, x1 vs v2 head-to-head (online; autoloop c1)",
+     "split": {
+      "lane": "sched-netres-rerun",
+      "cycle": "c1",
+      "kind": "online",
+      "cell": "NetRes re-runs: second chances at 40 s, x1 vs v2 head-to-head (online; autoloop c1)",
+      "unit": "one 40 s re-run (netres.solve: LB_PARAMS, one CP-SAT worker, destructive caps from the dataset file's current LB, below its UB) of a pass-3 miss that every later pass (lb3b, lb3c, lb4, lb5, lb6, lbm, the 7 Nov model runs) also missed and that is still open; a find = a proven bound above that LB (LB or CLOSED). Pool: random.Random(20261109).sample of 500 such instances, lb7's tasks left out",
+      "data": "runs/autoloop/cells/... /runs/RESULTS_*.tsv written by engine/train/autoloop/netres_run.py under the scheduler after registration; every instance of the arms' union run once and credited to each arm that holds it",
+      "keys_sha256": "d9f353ee644fd5280ac4ee049ff95f66914253e3d3b90dec25ad0fbc76863815",
+      "n": 500,
+      "rule": {
+       "kind": "top_k",
+       "frac": 0.2,
+       "online": true,
+       "report_fracs": [
+        0.1
+       ]
+      },
+      "comparisons": [
+       {
+        "version": "x1",
+        "control": "v2"
+       },
+       {
+        "version": "x1",
+        "control": "plain"
+       }
+      ],
+      "score_when": "every run of the union of x1's top 100, v2's top 100 and the plain order's first 100 has a row; K = 100 per arm (20% of the pool), the same 40 s per run in every arm; plain order = pass 3b's (NR_RU, NR_VAR, NR_RC, NR_TF, NR_AD; ids ascending)",
+      "frozen_scores": {
+       "x1": "engine/models/crosslane_v1.py refit as its predict command fits it (five other lanes; budget 40 s; all-zero lane embedding), checked against its frozen cell-A predictions",
+       "v2": "engine/models/sched_netres_rerun_v2.py refit on pass 3b's first 4,400 lines as its predict command fits it, checked against its frozen cell-A predictions"
+      },
+      "scorer": "lane_netres.score_rerun",
+      "eligible": 7557
+     },
+     "registered_utc": "2026-11-09T04:45:02Z",
+     "by": "engine/train/autoloop/core.py register_cell",
+     "seen_before": "instance keys, current bounds and earlier passes' records only (to keep instances every pass missed: 7557 eligible); no 40 s re-run of any of them existed",
+     "note": "autoloop: the owner's x1 vs v2 head-to-head, declared before running; then x1 vs plain"
+    }
+   ]
+  },
+  "sched-netres-lb-params": {
+   "plain_method": "every NetRes lower-bound run with CP-SAT setting A = LB_PARAMS (engine/sched/rcpsp_cpsat.py: overload checker, timetable edge finding, hard precedences in cumulative, exploit all precedences), one worker, destructive caps from the dataset file's LB",
+   "held_out": [
+    "NetRes settings: pass-3c misses (fresh, top 200 by lane sched-netres-lb v1)",
+    "NetRes settings: NR_TF pass-3 misses (set held out, top 200 by lane sched-netres-lb v1)",
+    "NetRes CP-SAT settings: 64 open pass-3 misses (NR_AD and NR_RC, instances never tuned on; autoloop s1)",
+    "NetRes CP-SAT settings: 64 open pass-3 misses (NR_TF, a set never used in tuning; autoloop s1)"
+   ],
+   "held_out_note": "Fixed 7 Nov 2026 20:4x Dubai (16:4x UTC), before any model of the lane was fit and before any training or test run of it was looked at (the 7 Nov settings A/B in runs/sched/ab/ had been seen: A 10, B 9 of 40 at 40 s; A 0, B 4 of 40 at 20 s). Choice: A or B = LB_PARAMS + linearization_level: 2, per instance, at 40 s. Training data (instances run with both settings side by side at 40 s): runs/sched/ab/lbparams_20261107_1918.json without its NR_TF rows, and runs/sched/model_rerun/phase1 (the pass-3c misses of lane sched-netres-rerun's cell 3: setting A from that cell's arms, setting B run alongside, tag params:train; launched 20:45 Dubai). Features: lane sched-netres-rerun's 36 (lane sched-netres-lb's 33 pre-run features and the 15 s short run's outcome). Model v1 fixed in advance (engine/models/sched_netres_params.py): two HistGradientBoostingClassifiers P(find | A), P(find | B) (learning_rate 0.05, max_iter 200, max_leaf_nodes 15, min_samples_leaf 20, l2_regularization 1.0, no early stopping, random_state 0); pick B when P_B > P_A, else A. Test cells, drawn 20:47 Dubai by sched_netres_params.py draw before any result (runs/sched/model_params/cells.tsv): S1 = the 200 pass-3c misses still open with the highest lane sched-netres-lb v1 frozen probability (runs/sched/model_v1/pred_snapshot_20261107T120228Z.tsv), outside the rerun lane's cell-3 sample of 750 (pool 2,339); S2 = the 200 NR_TF pass-3 misses still open with the highest such probability, outside both 7 Nov settings A/B runs and not yet printed by pass 3b (pool 1,862; NR_TF is in no training row). Every test instance runs with A and with B at 40 s (jobs_phase2.tsv: A and B adjacent, order alternating, one pool of nice-10 workers on the Mac, engine/models/netres_jobs.py); the control arm is each instance's A run, the model arm is the run of the setting the frozen model picked (picks.tsv, written and committed after phase 1 and before any phase-2 result is read), so the two arms are the same run wherever the model picks A. Verdict: finds (a proven bound above the starting LB), then the registry rule. Also reported: fixed B, the better of A and B per instance, instances found by only one setting, LB units, seconds.",
+   "drives_plan": "the setting of each task of the next NetRes lower-bound packages (Kaggle lb5 and later; runs/kaggle_netres/build.py --params-extra per task) and of the Mac re-run passes",
+   "champion": null,
+   "versions": [
+    {
+     "version": "v1",
+     "status": "challenger",
+     "code": "engine/models/sched_netres_params.py",
+     "sha256": "9219e90ab83e68034b98a63cd3f5778b944135689101eecda3fa9f0401d9fe27",
+     "model": "two HistGradientBoostingClassifiers (P(find | LB_PARAMS), P(find | LB_PARAMS + linearization_level 2)) on lane sched-netres-rerun's 36 pre-run features; picks the setting with the higher probability per instance",
+     "ab": [
+      {
+       "run": "sched-netres-lb-params v1 A/B on the Mac (S1), 7 Nov 20:49 to 8 Nov 01:19 Dubai: every instance run with setting A and with B at 40 s, adjacent in one pool of nice workers (engine/models/netres_jobs.py sha256 5a3dae74941344b152da0eea4850214e3dcf69f813213955406b02425f7c4b9b); control = the A run, model = the run of the frozen pick (runs/sched/model_params/picks.tsv, commit 73bf5a0 at 22:59:59, before any phase-2 result was read)",
+       "cell": "NetRes settings: pass-3c misses (fresh, top 200 by lane sched-netres-lb v1)",
+       "objective": "maximize",
+       "model": {
+        "runs": 200,
+        "finds": 127,
+        "best": null,
+        "median": null,
+        "lb_units": 183,
+        "seconds": 8000.7
+       },
+       "control": {
+        "runs": 200,
+        "finds": 132,
+        "best": null,
+        "median": null,
+        "lb_units": 159,
+        "seconds": 8000.4
+       },
+       "fixed_B": {
+        "runs": 200,
+        "finds": 122,
+        "lb_units": 199,
+        "seconds": 8000.9
+       },
+       "picks_B": 119,
+       "best_of_A_and_B": 158,
+       "found_by_A_only": 36,
+       "found_by_B_only": 26,
+       "where_the_model_switched_to_B": {
+        "n": 119,
+        "B_only": 16,
+        "A_only": 21
+       },
+       "verdict": "control (finds 127 vs 132; the model picked B on 119 of 200, where B alone found 16 and A alone 21; fixed B 122; the better of A and B per instance 158; LB units model 183, control 159)",
+       "evidence": "runs/sched/model_params/S1.json; rows runs/sched/model_params/phase2/RESULTS.tsv (tag params:S1)",
+       "code": "engine/models/sched_netres_params.py sha256 9219e90ab83e68034b98a63cd3f5778b944135689101eecda3fa9f0401d9fe27"
+      },
+      {
+       "run": "sched-netres-lb-params v1 A/B on the Mac (S2), 7 Nov 20:49 to 8 Nov 01:19 Dubai: every instance run with setting A and with B at 40 s, adjacent in one pool of nice workers (engine/models/netres_jobs.py sha256 5a3dae74941344b152da0eea4850214e3dcf69f813213955406b02425f7c4b9b); control = the A run, model = the run of the frozen pick (runs/sched/model_params/picks.tsv, commit 73bf5a0 at 22:59:59, before any phase-2 result was read)",
+       "cell": "NetRes settings: NR_TF pass-3 misses (set held out, top 200 by lane sched-netres-lb v1)",
+       "objective": "maximize",
+       "model": {
+        "runs": 200,
+        "finds": 123,
+        "best": null,
+        "median": null,
+        "lb_units": 155,
+        "seconds": 8000.9
+       },
+       "control": {
+        "runs": 200,
+        "finds": 123,
+        "best": null,
+        "median": null,
+        "lb_units": 137,
+        "seconds": 8000.8
+       },
+       "fixed_B": {
+        "runs": 200,
+        "finds": 101,
+        "lb_units": 155,
+        "seconds": 8001.0
+       },
+       "picks_B": 60,
+       "best_of_A_and_B": 149,
+       "found_by_A_only": 48,
+       "found_by_B_only": 26,
+       "where_the_model_switched_to_B": {
+        "n": 60,
+        "B_only": 10,
+        "A_only": 10
+       },
+       "verdict": "tie (finds 123 vs 123; the model picked B on 60 of 200, where B alone found 10 and A alone 10; fixed B 101; the better of A and B per instance 149; LB units model 155, control 137)",
+       "evidence": "runs/sched/model_params/S2.json; rows runs/sched/model_params/phase2/RESULTS.tsv (tag params:S2)",
+       "code": "engine/models/sched_netres_params.py sha256 9219e90ab83e68034b98a63cd3f5778b944135689101eecda3fa9f0401d9fe27"
+      }
+     ],
+     "pending": []
+    }
+   ],
+   "status_note": "8 Nov 01:2x Dubai: v1 lost S1 (127 vs 132 finds) and tied S2 (123 vs 123), so it is never promoted. Where it switched to B, B alone found 16 and A alone 21 (S1), 10 and 10 (S2): the T-learner did not learn which instances favour linearization level 2. The two settings are strongly complementary at 40 s (the better of A and B per instance: 158 and 149 finds against A's 132 and 123), so the next candidate is a portfolio (A then B within the same seconds) or a stronger selector, not v1. Side result: phases 1 and 2 proved 490 bounds above the dataset LB (NR_AD 341, NR_TF 149; 693 LB units) in runs/sched/model_rerun/phase1/RESULTS.tsv and runs/sched/model_params/phase2/RESULTS.tsv, not yet merged into NR_* (make_upload reads lb3b, lb3c, lb4).",
+   "held_out_registered": [
+    {
+     "cell": "NetRes CP-SAT settings: 64 open pass-3 misses (NR_AD and NR_RC, instances never tuned on; autoloop s1)",
+     "split": {
+      "lane": "sched-netres-lb-params",
+      "cycle": "s1",
+      "kind": "search",
+      "n": 64,
+      "cell": "NetRes CP-SAT settings: 64 open pass-3 misses (NR_AD and NR_RC, instances never tuned on; autoloop s1)",
+      "unit": "one 40 s destructive lower-bound run (search_netres.run: caps from the dataset file's current LB upward, below its UB, one CP-SAT worker, no hint) with the arm's settings; a find = a proven bound above that LB, or a proven optimum",
+      "data": "runs/autoloop/cells/<this cell>/runs/*.jsonl and RESULTS.tsv (netres_lb.py's columns after tag, setting, set), written by searchlane.py work after the version's settings were frozen",
+      "keys": [
+       "NR_AD 223588",
+       "NR_RC 387616",
+       "NR_AD 197193",
+       "NR_AD 219505",
+       "NR_AD 220323",
+       "NR_AD 198633",
+       "NR_AD 213198",
+       "NR_AD 204301",
+       "NR_AD 202770",
+       "NR_RC 354352",
+       "NR_AD 193974",
+       "NR_AD 221960",
+       "NR_RC 367204",
+       "NR_AD 237078",
+       "NR_AD 162780",
+       "NR_AD 232350",
+       "NR_AD 243564",
+       "NR_AD 249103",
+       "NR_AD 255461",
+       "NR_RC 339016",
+       "NR_AD 210667",
+       "NR_AD 243567",
+       "NR_RC 253221",
+       "NR_RC 225621",
+       "NR_AD 247478",
+       "NR_RC 356421",
+       "NR_RC 213666",
+       "NR_RC 384939",
+       "NR_AD 230715",
+       "NR_AD 239511",
+       "NR_AD 184375",
+       "NR_AD 180205",
+       "NR_AD 226756",
+       "NR_AD 215548",
+       "NR_AD 212377",
+       "NR_RC 369933",
+       "NR_AD 194698",
+       "NR_RC 238266",
+       "NR_AD 199508",
+       "NR_RC 382521",
+       "NR_RC 385876",
+       "NR_RC 226204",
+       "NR_RC 375621",
+       "NR_AD 229975",
+       "NR_AD 239563",
+       "NR_AD 228318",
+       "NR_RC 333648",
+       "NR_RC 330924",
+       "NR_AD 245114",
+       "NR_AD 228389",
+       "NR_AD 229908",
+       "NR_AD 180375",
+       "NR_AD 247405",
+       "NR_AD 246647",
+       "NR_AD 230631",
+       "NR_RC 212183",
+       "NR_AD 194703",
+       "NR_AD 248360",
+       "NR_AD 161955",
+       "NR_AD 229929",
+       "NR_RC 374733",
+       "NR_RC 336339",
+       "NR_RC 249948",
+       "NR_RC 360339"
+      ],
+      "keys_sha256": "ec30c5aaf8102ade86617a42d6665345ae60943a962cc98586153e4d1d331056",
+      "budget_s": 40.0,
+      "plain": {
+       "stages": [
+        {
+         "extra": "",
+         "frac": 1.0
+        }
+       ]
+      },
+      "runner_code": {
+       "engine/train/autoloop/search_netres.py": "35aa84d0056558f2e66787a19e4ba04d3f7b82e67cac0c50d6039566e88741db",
+       "runs/sched/netres.py": "5dc044af727a5fd5b431d81f4e4d9d2727d94b9c225262fb37b5cd183aa26b15",
+       "engine/sched/rcpsp_cpsat.py": "e1a9071c5935d7d4bbe8639e7674cae3bde6bde4daf1a7a689f61fbdc2750868"
+      },
+      "rule": {
+       "kind": "search",
+       "budget": "s_per_run",
+       "per_run": 40.0,
+       "paired": true,
+       "statistic": "finds (a proven bound above the current LB, or a proven optimum); best and median none (registry.verdict); LB units and CPU seconds reported"
+      },
+      "comparisons": [
+       {
+        "version": "@gen",
+        "control": "plain"
+       }
+      ],
+      "score_when": "every instance has one run of each declared arm with its frozen settings",
+      "scorer": "searchlane.score_registered"
+     },
+     "registered_utc": "2026-11-09T16:34:04Z",
+     "by": "engine/train/autoloop/core.py register_cell",
+     "seen_before": "instance keys, current bounds and earlier passes' records only (instances every pass missed, still open); no run of any cell instance existed; no tuning run of the round existed",
+     "note": "autoloop v2 search-settings round s1"
+    },
+    {
+     "cell": "NetRes CP-SAT settings: 64 open pass-3 misses (NR_TF, a set never used in tuning; autoloop s1)",
+     "split": {
+      "lane": "sched-netres-lb-params",
+      "cycle": "s1",
+      "kind": "search",
+      "n": 64,
+      "cell": "NetRes CP-SAT settings: 64 open pass-3 misses (NR_TF, a set never used in tuning; autoloop s1)",
+      "unit": "one 40 s destructive lower-bound run (search_netres.run: caps from the dataset file's current LB upward, below its UB, one CP-SAT worker, no hint) with the arm's settings; a find = a proven bound above that LB, or a proven optimum",
+      "data": "runs/autoloop/cells/<this cell>/runs/*.jsonl and RESULTS.tsv (netres_lb.py's columns after tag, setting, set), written by searchlane.py work after the version's settings were frozen",
+      "keys": [
+       "NR_TF 416737",
+       "NR_TF 463544",
+       "NR_TF 319578",
+       "NR_TF 365193",
+       "NR_TF 431169",
+       "NR_TF 326764",
+       "NR_TF 308778",
+       "NR_TF 270344",
+       "NR_TF 375942",
+       "NR_TF 462304",
+       "NR_TF 253513",
+       "NR_TF 438327",
+       "NR_TF 260779",
+       "NR_TF 272744",
+       "NR_TF 321970",
+       "NR_TF 249972",
+       "NR_TF 285944",
+       "NR_TF 375937",
+       "NR_TF 415578",
+       "NR_TF 369904",
+       "NR_TF 383178",
+       "NR_TF 475579",
+       "NR_TF 281133",
+       "NR_TF 243963",
+       "NR_TF 307543",
+       "NR_TF 432344",
+       "NR_TF 431030",
+       "NR_TF 312361",
+       "NR_TF 401137",
+       "NR_TF 318317",
+       "NR_TF 393980",
+       "NR_TF 401158",
+       "NR_TF 462369",
+       "NR_TF 270370",
+       "NR_TF 284731",
+       "NR_TF 423962",
+       "NR_TF 314718",
+       "NR_TF 401104",
+       "NR_TF 353153",
+       "NR_TF 260717",
+       "NR_TF 318304",
+       "NR_TF 339934",
+       "NR_TF 425110",
+       "NR_TF 449188",
+       "NR_TF 333950",
+       "NR_TF 259558",
+       "NR_TF 243943",
+       "NR_TF 302786",
+       "NR_TF 314769",
+       "NR_TF 445579",
+       "NR_TF 246369",
+       "NR_TF 332784",
+       "NR_TF 470744",
+       "NR_TF 260705",
+       "NR_TF 401123",
+       "NR_TF 353149",
+       "NR_TF 323127",
+       "NR_TF 252327",
+       "NR_TF 332798",
+       "NR_TF 457593",
+       "NR_TF 415505",
+       "NR_TF 295563",
+       "NR_TF 342353",
+       "NR_TF 254793"
+      ],
+      "keys_sha256": "d6da9ebedd2437db29d9d8e9ff6908a4ec609ac9eec53bd3cdd4b987a2ad34d0",
+      "budget_s": 40.0,
+      "plain": {
+       "stages": [
+        {
+         "extra": "",
+         "frac": 1.0
+        }
+       ]
+      },
+      "runner_code": {
+       "engine/train/autoloop/search_netres.py": "35aa84d0056558f2e66787a19e4ba04d3f7b82e67cac0c50d6039566e88741db",
+       "runs/sched/netres.py": "5dc044af727a5fd5b431d81f4e4d9d2727d94b9c225262fb37b5cd183aa26b15",
+       "engine/sched/rcpsp_cpsat.py": "e1a9071c5935d7d4bbe8639e7674cae3bde6bde4daf1a7a689f61fbdc2750868"
+      },
+      "rule": {
+       "kind": "search",
+       "budget": "s_per_run",
+       "per_run": 40.0,
+       "paired": true,
+       "statistic": "finds (a proven bound above the current LB, or a proven optimum); best and median none (registry.verdict); LB units and CPU seconds reported"
+      },
+      "comparisons": [
+       {
+        "version": "@gen",
+        "control": "plain"
+       }
+      ],
+      "score_when": "every instance has one run of each declared arm with its frozen settings",
+      "scorer": "searchlane.score_registered"
+     },
+     "registered_utc": "2026-11-09T16:34:04Z",
+     "by": "engine/train/autoloop/core.py register_cell",
+     "seen_before": "instance keys, current bounds and earlier passes' records only (instances every pass missed, still open); no run of any cell instance existed; no tuning run of the round existed",
+     "note": "autoloop v2 search-settings round s1"
+    }
+   ]
+  }
+ }
+}

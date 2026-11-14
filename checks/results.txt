@@ -1,0 +1,23 @@
+run_checks.sh 2026-11-14T08:24:25Z; Python 3.12.13
+=== 1. frozen predictions and registered files
+runs/sched/model_rerun_v2/pred_A.tsv eeb0ffbca2fc579c rows 5582: matches predict_info.json
+runs/sched/model_rerun_v2/pred_B.tsv f47d7d382094810b rows 947: matches predict_info.json
+runs/sched/model_rerun_x1/pred_A.tsv 4e32a9d4c1ba5e67 rows 5582: matches predict_info.json
+runs/sched/model_rerun_x1/pred_B.tsv 63016020359127f9 rows 947: matches predict_info.json
+engine/sched/rcpsp_cpsat.py e1a9071c5935d7d4: digest recorded in data/registry_netres.json
+engine/models/netres_jobs.py 5a3dae74941344b1: digest recorded in data/registry_netres.json
+runs/sched/netres.py 5dc044af727a5fd5: digest recorded in data/registry_netres.json
+runs/sched/model_v2/pred_lb6_20261108T172526Z.tsv 16bb8fb12d469898: digest recorded in data/registry_netres.json
+=== 2. the paper's numbers from data/
+497 values, 173 checks passed
+918cd088c7061e80bdd19121fc5c6778fe4fbb916766ae7f7485f8ec9507d058  numbers.tex
+bf695ae4494049ee3550cfbb61735a99dc15bc9175989ce3a3747bce9b628013  numbers.json
+4f39d094047513a4bbee5c9ddaa8d559233f3b1f33222fd1238eb363e6659554  highlights.tex
+aba82b30c399cf922cde251f489db29d2bffa36df0f4d3f3b83123a526cb91f6  highlights.txt
+tables: 9 files, sha256 of their concatenation in name order: 54db8ff9ca6bc2d09d7575eb05a2c8ac99dacd434ca3d9a2d3e24cf6c6a8f39f
+=== 3. data-only scripts
+scripts/ab_pvalues.py: data/ab_pvalues.tsv unchanged (a86cb4ac1a6b9499135c55c2f7d172bd951a14436978ffb836a475c33820a72d)
+scripts/rc_rs.py: data/rc_rs.tsv unchanged (0d0d72d40edbe1b23fa97314878b651c74b7ccfa36db94b876478df15df94374)
+=== 4. solver code
+imports ok: netres, netres_lb, netres_jobs, rcpsp_cpsat; OR-Tools 9.15.6755
+ALL PASS

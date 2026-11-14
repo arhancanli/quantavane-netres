@@ -1,0 +1,147 @@
+{
+ "NR_AD": {
+  "anomalies": {},
+  "folders": {
+   "0": "Set 2.1 AD (low SP)",
+   "1": "Set 2.2 AD (mid SP)"
+  },
+  "instance columns differing 2026-11-01 vs 2026-11-06": 0,
+  "instance columns differing 2026-11-01 vs 2026-11-09": 0,
+  "refs": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "CPM",
+   "Capacity LB",
+   "Sum PT"
+  ],
+  "ressets": {
+   "ResSet1.txt": 480000
+  }
+ },
+ "NR_LA": {
+  "anomalies": {},
+  "folders": {
+   "0": "Set 3.1 LA (low SP)",
+   "1": "Set 3.2 LA (mid SP)",
+   "2": "Set 3.3 LA (high SP)"
+  },
+  "instance columns differing 2026-11-01 vs 2026-11-06": 0,
+  "instance columns differing 2026-11-01 vs 2026-11-09": 0,
+  "refs": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "CPM",
+   "Capacity LB",
+   "Sum PT"
+  ],
+  "ressets": {
+   "ResSet1.txt": 720000
+  }
+ },
+ "NR_RC": {
+  "anomalies": {},
+  "folders": {
+   "0": "Set 1 SP"
+  },
+  "instance columns differing 2026-11-01 vs 2026-11-06": 0,
+  "instance columns differing 2026-11-01 vs 2026-11-09": 0,
+  "refs": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "CPM",
+   "Capacity LB",
+   "Sum PT"
+  ],
+  "ressets": {
+   "ResSet2.txt": 540000
+  }
+ },
+ "NR_RU": {
+  "anomalies": {},
+  "folders": {
+   "0": "Set 1 SP"
+  },
+  "instance columns differing 2026-11-01 vs 2026-11-06": 0,
+  "instance columns differing 2026-11-01 vs 2026-11-09": 0,
+  "refs": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "CPM",
+   "Capacity LB",
+   "Sum PT"
+  ],
+  "ressets": {
+   "ResSet3.txt": 270000
+  }
+ },
+ "NR_SP": {
+  "anomalies": {},
+  "folders": {
+   "0": "Set 1 SP"
+  },
+  "instance columns differing 2026-11-01 vs 2026-11-06": 0,
+  "instance columns differing 2026-11-01 vs 2026-11-09": 0,
+  "refs": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "CPM",
+   "Capacity LB",
+   "Sum PT"
+  ],
+  "ressets": {
+   "ResSet1.txt": 540000
+  }
+ },
+ "NR_TF": {
+  "anomalies": {},
+  "folders": {
+   "0": "Set 4.1 TF (low SP)",
+   "1": "Set 4.2 TF (mid SP)",
+   "2": "Set 4.3 TF (high SP)"
+  },
+  "instance columns differing 2026-11-01 vs 2026-11-06": 0,
+  "instance columns differing 2026-11-01 vs 2026-11-09": 0,
+  "refs": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "CPM",
+   "Capacity LB",
+   "Sum PT"
+  ],
+  "ressets": {
+   "ResSet1.txt": 720000
+  }
+ },
+ "NR_VAR": {
+  "anomalies": {},
+  "folders": {
+   "0": "Set 1 SP"
+  },
+  "instance columns differing 2026-11-01 vs 2026-11-06": 0,
+  "instance columns differing 2026-11-01 vs 2026-11-09": 0,
+  "refs": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "CPM",
+   "Capacity LB",
+   "Sum PT"
+  ],
+  "ressets": {
+   "ResSet4.txt": 540000
+  }
+ }
+}
