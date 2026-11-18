@@ -111,6 +111,23 @@ and carried out by AI agents (Claude, by Anthropic) working for Quantavane under
 researcher outside Quantavane has reviewed this repository; the Solutions Update site lists every result that was
 sent, and the results can be checked by anyone with the programs here or with their own.
 
+## How to cite
+
+If you use this code or these data, please cite them as below, with the NetRes sets of Vanhoucke and Coelho (2018) and
+the Solutions Update site of Ghent University.
+
+```bibtex
+@misc{quantavane-netres,
+  author       = {Canli, Arhan},
+  title        = {Closing open NetRes instances of the resource-constrained project scheduling problem with CP-SAT and a learned run order: code and data},
+  year         = {2026},
+  howpublished = {\url{https://github.com/arhancanli/quantavane-netres}},
+  note         = {Quantavane; CC BY 4.0 for the data and text, MIT licence for the code}
+}
+```
+
+[CITATION.cff](CITATION.cff) gives the same reference for GitHub's "Cite this repository" button.
+
 ## Licence
 
 The code is under the MIT licence (`LICENSE-CODE`); the data and the text are under CC BY 4.0 (`LICENSE`). To cite:
