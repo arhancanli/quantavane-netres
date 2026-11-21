@@ -128,6 +128,9 @@ the Solutions Update site of Ghent University.
 
 [CITATION.cff](CITATION.cff) gives the same reference for GitHub's "Cite this repository" button.
 
+Known uses of this work are listed in [USED_BY.md](USED_BY.md). If you use it, please open an issue or a pull request
+with a link so that yours can be added.
+
 ## Licence
 
 The code is under the MIT licence (`LICENSE-CODE`); the data and the text are under CC BY 4.0 (`LICENSE`). To cite:
